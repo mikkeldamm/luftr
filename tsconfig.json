@@ -9,6 +9,7 @@
   },
   "files": [
     "typings/main.d.ts",
+    "src/bootstrap.ts",
     "src/vendor.ts"
   ],
   "compileOnSave": false

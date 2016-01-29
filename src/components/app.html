@@ -1,0 +1,14 @@
+<h1>Welcome to Angular2 with Auth0</h1>
+<button *ngIf="!loggedIn()" (click)="login()">Login</button>
+<button *ngIf="loggedIn()" (click)="logout()">Logout</button>
+<hr>
+<div>
+<button [routerLink]="['./PublicRoute']">Public Route</button>
+<button *ngIf="loggedIn()" [routerLink]="['./PrivateRoute']">Private Route</button>
+<router-outlet></router-outlet>
+</div>
+<hr>
+<button (click)="getThing()">Get Thing</button>
+<button *ngIf="loggedIn()" (click)="tokenSubscription()">Show Token from Observable</button>
+<button (click)="getSecretThing()">Get Secret Thing</button>
+<button *ngIf="loggedIn()" (click)="useJwtHelper()">Use Jwt Helper</button>
