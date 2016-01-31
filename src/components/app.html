@@ -4,7 +4,7 @@
 <hr>
 <div>
 <button [routerLink]="['./PublicRoute']">Public Route</button>
-<button *ngIf="loggedIn()" [routerLink]="['./PrivateRoute']">Private Route</button>
+<button [routerLink]="['./PrivateRoute']">Private Route</button>
 <router-outlet></router-outlet>
 </div>
 <hr>
@@ -12,3 +12,6 @@
 <button *ngIf="loggedIn()" (click)="tokenSubscription()">Show Token from Observable</button>
 <button (click)="getSecretThing()">Get Secret Thing</button>
 <button *ngIf="loggedIn()" (click)="useJwtHelper()">Use Jwt Helper</button>
+<div id="root" style="width: 280px; margin: 40px auto; padding: 10px; border-style: dashed; border-width: 1px;">
+    embeded area
+</div>

@@ -5,11 +5,19 @@
   "devDependencies": {},
   "ambientDependencies": {
     "angular-protractor": "github:angular/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
+    "cookie-parser": "github:DefinitelyTyped/DefinitelyTyped/cookie-parser/cookie-parser.d.ts#e2001653ffbd99c2fc80a272ca80d8c958136de4",
     "es6-shim": "github:angular/DefinitelyTyped/es6-shim/es6-shim.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
+    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#2e7a477ac2b6471055aa6e0e56b333e8f327d6b7",
+    "express-session": "github:DefinitelyTyped/DefinitelyTyped/express-session/express-session.d.ts#da2bb07e037a61e6ead149ae89063b00892f6929",
     "hammerjs": "github:angular/DefinitelyTyped/hammerjs/hammerjs.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
     "jasmine": "github:angular/DefinitelyTyped/jasmine/jasmine.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
+    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#2e7a477ac2b6471055aa6e0e56b333e8f327d6b7",
+    "ng2": "github:gdi2290/typings-ng2/ng2.d.ts#32998ff5584c0eab0cd9dc7704abb1c5c450701c",
     "node": "github:angular/DefinitelyTyped/node/node.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
+    "passport": "github:DefinitelyTyped/DefinitelyTyped/passport/passport.d.ts#432545c4d99dba86a5229bed0e500f66f43b1baa",
+    "request": "github:DefinitelyTyped/DefinitelyTyped/request/request.d.ts#e252a088123eb595d9d772eb373f41c084360278",
     "selenium-webdriver": "github:angular/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
+    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#2e7a477ac2b6471055aa6e0e56b333e8f327d6b7",
     "zone": "github:angular/DefinitelyTyped/zone/zone.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9"
   }
 }

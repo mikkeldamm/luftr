@@ -9,6 +9,8 @@
   },
   "files": [
     "typings/main.d.ts",
+    "src/cookiething.ts",
+    "src/server.ts",
     "src/bootstrap.ts",
     "src/vendor.ts"
   ],
