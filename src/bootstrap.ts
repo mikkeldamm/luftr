@@ -18,7 +18,7 @@ export function main() {
     ELEMENT_PROBE_PROVIDERS,
     provide(AuthUser, {
         useFactory: () => {
-            return new AuthUser();
+            return new AuthUser().getUser(C("auth_token"));
         }
     }),
     provide(CookieThing, {
@@ -35,5 +35,8 @@ export function main() {
   ])
   .catch(err => console.error(err));
 }
+
+export function C(k){return(document.cookie.match('(^|; )'+k+'=([^;]*)')||0)[2]}
+
 
 document.addEventListener('DOMContentLoaded', main);

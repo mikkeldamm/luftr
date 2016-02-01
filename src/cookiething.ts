@@ -1,5 +1,27 @@
+declare var Auth0Lock;
+
 export class AuthUser {
-    name: string;
+    getUser(token: string) {
+        
+        var lock = new Auth0Lock('RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT', 'lufer.eu.auth0.com');
+        
+        lock.getProfile(token, function(err, profile) {
+                    
+            if (err) {
+                console.log('Cannot get user :(', err);
+                return;
+            }
+
+            console.log("Hey dude", profile);
+        });
+    }
+}
+
+export class AuthUserNode {
+    getUser(token: string) {
+        
+        return {};
+    }
 }
 
 export class CookieThing {

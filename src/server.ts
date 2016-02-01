@@ -2,10 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as request from 'request';
 import * as cookieParser from 'cookie-parser';
-import * as passport from 'passport';
-import * as session from 'express-session';
 
-var Auth0Strategy = require('passport-auth0');
 var dotenv = require('dotenv');
 
 // Angular 2
@@ -17,7 +14,7 @@ import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {HTTP_PROVIDERS, Http} from 'angular2/http';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 
-import {CookieThing, AuthUser} from './cookiething';
+import {CookieThing, AuthUser, AuthUserNode} from './cookiething';
 import {App} from './components/app';
 
 dotenv.load();
@@ -37,8 +34,6 @@ function ngApp(req, res) {
   let baseUrl = '/';
   let url = req.originalUrl || '/';
   
-  console.log("Cookies: ", req.cookies);
-  
   res.render('index', {
     App,
     providers: [
@@ -49,7 +44,7 @@ function ngApp(req, res) {
       HTTP_PROVIDERS,
       provide(AuthUser, {
          useFactory: () => {
-            return (<any>req.session).user;
+            return new AuthUserNode().getUser(req.cookies.auth_token);
          }
       }),
       provide(CookieThing, {
@@ -59,7 +54,7 @@ function ngApp(req, res) {
       }),
       provide(AuthHttp, {
         useFactory: (http) => {
-            return new AuthHttp(new AuthConfig({tokenGetter: ""}), http);
+            return new AuthHttp(new AuthConfig({tokenGetter: ""}), http); // TODO: make tokenGetter use cookies
         },
         deps: [Http]
       })
@@ -68,20 +63,6 @@ function ngApp(req, res) {
   });
 }
 
-var strategy = new Auth0Strategy({
-    domain:       process.env.AUTH0_DOMAIN,
-    clientID:     process.env.AUTH0_CLIENT_ID,
-    clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL:  process.env.AUTH0_CALLBACK_URL
-  }, function(accessToken, refreshToken, extraParams, profile, done) {
-    // accessToken is the token to call Auth0 API (not needed in the most cases)
-    // extraParams.id_token has the JSON Web Token
-    // profile has all the information from the user
-    return done(null, profile);
-  });
-
-app.use(session({ secret: 'dammshhhh', resave: false, saveUninitialized: false }));
-
 // Use cookies
 app.use(cookieParser());
 
@@ -89,7 +70,6 @@ app.use(cookieParser());
 app.use(express.static(root));
 
 // Routes
-//app.get('/auth/token', passport.authenticate('auth0', { failureRedirect: '/error' }), function(req, res) {
 app.get('/auth/token', function(req, res) {
     
     var code = req.query.code;
@@ -113,28 +93,15 @@ app.get('/auth/token', function(req, res) {
         }
         
         var result = JSON.parse(body);
-        
-        console.log("# Response body -----");
-        console.log(result);
-        console.log("------");
-        
         var accessToken = result['access_token'];
         var idToken = result['id_token'];
         
-        strategy.userProfile(accessToken, function(err, user) {
-       
-            (<any>req.session).user = user;
-       
-            console.log("# Session User -------");
-            console.log((<any>req.session).user);
-            console.log("------");
-            
-            if (!(<any>req.session).user) {
-                throw new Error('user null');
-            }
-            
-            res.redirect("/user");
-        });
+        if (!idToken) {
+            throw new Error("Didn't get any access token");
+        }
+        
+        res.cookie('auth_token', idToken);
+        res.redirect("/user");
     });
 });
 
