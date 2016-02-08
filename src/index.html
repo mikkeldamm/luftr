@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title><%= webpackConfig.metadata.title %></title>
+    <meta charset="UTF-8">
+    <base href="/">
+</head>
+<body>
+
+    <app>
+        Loading luftr...
+    </app>
+
+    <% if (webpackConfig.metadata.ENV === 'development') { %>
+    <script src="http://<%= webpackConfig.metadata.host %>:<%= webpackConfig.metadata.port %>/webpack-dev-server.js"></script>
+    <% } %>
+</body>
+</html>
