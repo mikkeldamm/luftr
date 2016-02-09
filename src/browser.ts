@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', function main() {
     bootstrap(App, [
         ...ENV_PROVIDERS,
         ...HTTP_PROVIDERS,
-        ...ROUTER_PROVIDERS,
-        provide(LocationStrategy, { useClass: HashLocationStrategy })
+        ...ROUTER_PROVIDERS
     ])
         .catch(err => console.error(err));
 

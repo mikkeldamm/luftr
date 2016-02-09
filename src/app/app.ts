@@ -22,29 +22,12 @@ export class About {
 
 @Component({
     selector: 'app',
+    encapsulation: ViewEncapsulation.None,
     directives: [
         ...ROUTER_DIRECTIVES
     ],
-    styles: [
-        require('./app.scss')
-    ],
-    encapsulation: ViewEncapsulation.None,
-    template: `
-  <div>
-    <nav>
-      <a [routerLink]=" ['./Home'] ">damm</a>
-      <a [routerLink]=" ['./About'] ">About</a>
-    </nav>
-    <div>
-      <span>Hello, {{ name }}!</span>
-    </div>
-
-    name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-  `
+    styles: [require('./app.scss')],
+    template: require('./app.html')
 })
 @RouteConfig([
     { path: '/', component: Home, name: 'Home' },
