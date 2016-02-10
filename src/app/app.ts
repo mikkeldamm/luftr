@@ -35,8 +35,6 @@ export class About {
     { path: '/about', component: About, name: 'About' }
 ])
 export class App {
-    name: string = 'Angular 2';
     constructor() {
-        console.log("what");
     }
 }

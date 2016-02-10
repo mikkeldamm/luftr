@@ -1,14 +1,9 @@
-<div>
-    <nav>
-      <a [routerLink]=" ['./Home'] ">damm</a>
-      <a [routerLink]=" ['./About'] ">About</a>
-    </nav>
-    <div>
-      <span>Hello, {{ name }}!</span>
-    </div>
-
-    name: <input type="text" [value]="name" (input)="name = $event.target.value" autofocus>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  </div>
+<header id="header">
+    <nav id="navigation">
+    </nav>  
+</header>
+<main id="main">
+    <router-outlet></router-outlet>
+</main>
+<footer id="footer">
+</footer>
