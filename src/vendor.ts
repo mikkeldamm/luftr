@@ -4,7 +4,6 @@ import 'es6-shim';
 import 'es6-promise';
 
 if ('production' === process.env.ENV) {
-    
     // In production Reflect with es7-reflect-metadata/reflect-metadata is added
 
     // Zone.js
@@ -15,7 +14,6 @@ if ('production' === process.env.ENV) {
     require('rxjs/add/operator/map');
 
 } else {
-    
     // Reflect Polyfill
     require('es7-reflect-metadata/src/global/browser');
     // In production Reflect with es7-reflect-metadata/reflect-metadata is added
@@ -139,6 +137,3 @@ if ('production' === process.env.ENV) {
     require('rxjs/add/operator/zip');
     require('rxjs/add/operator/zipAll');
 }
-
-// For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
-// Also see custom_typings.d.ts as you also need to do `typings install x` where `x` is your module
