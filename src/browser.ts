@@ -19,6 +19,5 @@ document.addEventListener('DOMContentLoaded', function main() {
         ...HTTP_PROVIDERS,
         ...ROUTER_PROVIDERS
     ])
-        .catch(err => console.error(err));
-
+    .catch(err => console.error(err));
 });
