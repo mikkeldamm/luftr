@@ -1,0 +1,22 @@
+{
+  "name": "luftr",
+  "description": "Luftr is a website for dog sitters",
+  "main": "",
+  "authors": [
+    "Mikkel Damm <mikkeldamm@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mikkeldamm/luftr",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "~6.1.2"
+  }
+}

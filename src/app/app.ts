@@ -13,7 +13,7 @@ export class Home {
 @Component({
     selector: 'about',
     template: `
-  About
+  About2
   `
 })
 export class About {
@@ -25,8 +25,7 @@ export class About {
     encapsulation: ViewEncapsulation.None,
     directives: [
         ...ROUTER_DIRECTIVES
-    ],
-    styles: [require('./app.scss')],
+    ], 
     template: require('./app.html')
 })
 @RouteConfig([
