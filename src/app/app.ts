@@ -1,6 +1,8 @@
 import {Component, Directive, ElementRef, Renderer, ViewEncapsulation} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
+import {Footer} from './components/footer/footer';
+
 @Component({
     selector: 'home',
     template: `
@@ -24,7 +26,8 @@ export class About {
     selector: 'app',
     encapsulation: ViewEncapsulation.None,
     directives: [
-        ...ROUTER_DIRECTIVES
+        ...ROUTER_DIRECTIVES,
+        Footer
     ], 
     template: require('./app.html')
 })
