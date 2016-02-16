@@ -8,4 +8,6 @@ body {
     color: red;
 }
 
+@import './app/components/navigation/navigation';
+@import './app/components/logo/logo';
 @import './app/components/footer/footer';
