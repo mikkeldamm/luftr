@@ -13,6 +13,7 @@
     "clean:install": "npm set progress=false && npm install",
     "preclean:start": "npm run clean",
     "clean:start": "npm start",
+    "watch:sass": "node-sass --watch --include-path scss ./src/browser.scss ./dist/styles/browser.css",
     "build:sass": "node-sass --include-path scss ./src/browser.scss ./dist/styles/browser.css",
     "build": "npm run build:dev && npm run build:sass",
     "prebuild:dev": "npm run clean:dist",
