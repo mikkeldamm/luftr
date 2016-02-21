@@ -1,4 +1,87 @@
 #hero {
     
-    color: blue;
+    height: 600px;
+    position: relative;
+    
+    .hero-image {
+        
+        background-image: url('/assets/images/main.jpg');
+        background-size: cover;
+        height: 100%;
+    }
+}
+
+#scene {
+    
+    margin: 0 auto;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    position: absolute;
+    background-color: rgba(28,28,29,0.3);
+    padding: 1.4em;
+    font-size: 1.1em;
+    
+    .scene-fields {
+        
+        max-width: 800px;
+        margin: 0 auto;
+        
+        > .column {
+            
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        input, button {
+            
+            width: 100%;
+            border: 0;
+            padding: 0.9em;
+            color: #000;
+            background-color: #fff;
+            border-radius: 1px;
+            line-height: 1.1em;
+            
+            &:focus {
+                
+                outline: none;
+            }
+        }
+    }
+    
+    .scene-field-city {
+        
+        input {
+            
+            border-right: 1px solid #D8DCDD;
+            border-radius: 1px 0 0 1px;
+        }
+    }
+    
+    .scene-field-days {
+        
+        input {
+            
+            border-radius: 0;
+        }
+    }
+    
+    .scene-field-button {
+        
+        button {
+            
+            color: #FFF;
+            background-color: #41A79E;
+            border-radius: 0 1px 1px 0;
+            transition: background-color 0.1s ease;
+            
+            &:hover,
+            &:active {
+                
+                background-color: #448A84;
+            }
+        }
+    }
 }

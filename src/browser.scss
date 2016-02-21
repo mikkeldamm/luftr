@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 @import '../bower_components/foundation-sites/scss/foundation.scss';
 
@@ -9,6 +10,11 @@ body {
     
     font-family: 'Montserrat', sans-serif;
     color: red;
+}
+
+#header {
+    
+    
 }
 
 @import './app/components/navigation/navigation';

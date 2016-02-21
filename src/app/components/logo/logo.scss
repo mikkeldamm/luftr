@@ -1,3 +1,15 @@
 #logo {
-    
+ 	  
+    background-color: #fceab4;
+    z-index: 100;
+    position: absolute;
+    padding: 0.8em;
+    top: 2em;
+    left: 2em;
+       
+    svg {
+        
+        height: 26px;
+        display: block;
+    }
 }
