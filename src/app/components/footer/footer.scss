@@ -2,6 +2,31 @@
  
     background-color: #283845;
     padding: 2em 0;
+    
+    .footer-logo {
+        
+        display: inline-block;
+        height: 35px;
+        margin-top: 34px;
+        text-align: center;
+        
+        svg {
+            
+            height: 100%;
+            
+            path,
+            polygon {
+                
+                fill: #fff;
+                
+                &[stroke] {
+                    
+                    stroke: #B2B9BC;
+                    fill: none;
+                }
+            }
+        }
+    }
  
     ul {
         
