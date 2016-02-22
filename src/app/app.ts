@@ -6,24 +6,7 @@ import {Logo} from './components/logo/logo';
 import {Navigation} from './components/navigation/navigation';
 import {Footer} from './components/footer/footer';
 
-@Component({
-    selector: 'home',
-    template: `
-  Home
-  `
-})
-export class Home {
-}
-
-@Component({
-    selector: 'about',
-    template: `
-  About2
-  `
-})
-export class About {
-}
-
+import {Home} from './components/home/home';
 
 @Component({
     selector: 'app',
@@ -38,9 +21,7 @@ export class About {
     template: require('./app.html')
 })
 @RouteConfig([
-    { path: '/', component: Home, name: 'Home' },
-    { path: '/home', component: Home, name: 'Home' },
-    { path: '/about', component: About, name: 'About' }
+    { path: '/', component: Home, name: 'Home' }
 ])
 export class App {
     constructor() {
