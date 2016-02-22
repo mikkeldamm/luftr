@@ -9,7 +9,28 @@
 body {
     
     font-family: 'Montserrat', sans-serif;
-    color: red;
+}
+
+body, p, h2, h3, h4 {
+    
+    color: #5F6264;
+    
+    &:visited,
+    &:active {
+        
+        color: #5F6264
+    }
+}
+
+.row {
+    
+    max-width: rem-calc(1000);
+}
+
+h1 {
+    
+    margin: 0 0 0.5em 0;
+    color: #395654;
 }
 
 #header {

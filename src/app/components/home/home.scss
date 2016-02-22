@@ -1,3 +1,111 @@
 #home {
     
-}
+    padding: 2.5rem 0 1.8rem 0;
+    
+    .home-text, 
+    .home-sub-text {
+        
+        text-align: center;
+    }
+    
+    .home-sub-text {
+        
+        margin-top: 1em;
+        
+        h2 {
+            
+            border-top: 1px solid #DAEAE9;
+            margin: 1em 0 1em 0;
+            padding-top: 1em;
+        }
+        
+        p {
+            
+            
+        }
+    }
+    
+    .home-user-login {
+        
+        background-image: url('/assets/images/main2.jpg');
+    }
+    
+    .home-user-register {
+        
+        background-image: url('/assets/images/main.jpg');
+    }
+    
+    .home-user-login,
+    .home-user-register {
+        
+        display: block;
+        background-position: center;
+        background-size: cover;
+        min-height: 400px;
+        position: relative;
+        margin-top: 1em;
+        
+        h3 {
+            
+            position: absolute;
+            display: inline-block;
+            text-align: center;
+            bottom: 1em;
+            right: 1em;
+            left: 1em;
+            margin: 0;
+            color: #FFF;
+            text-decoration: none;
+            font-size: 1.9em;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+        }
+    }
+    
+    .home-sections {
+        
+        a {
+            
+            display: block;
+            position: relative;
+            margin-top: 1em;
+            text-decoration: none;
+            
+            .home-section-text {
+                
+                padding: 1em;
+            }
+            
+            img {
+                
+                height: 190px;
+            }
+            
+            h4 {
+                
+                margin: 0 0 0.9em 0;
+            }
+            
+            p {
+                
+                margin: 0;
+                font-size: 0.9em;
+            }
+        }
+    }
+    
+    .home-section-1 {
+        
+        background-color: #FFF1E5;
+    }
+    
+    .home-section-2 {
+        
+        background-color: #EAEAEA;
+    }
+    
+    .home-section-3 {
+        
+        background-color: #DBE0CC;
+    }
+} 
