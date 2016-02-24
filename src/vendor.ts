@@ -15,6 +15,9 @@ if ('production' === process.env.ENV) {
     require('rxjs/add/operator/debounceTime');
     require('rxjs/add/operator/distinctUntilChanged');
     require('rxjs/add/operator/switchMap');
+    require('rxjs/add/observable/from');
+    require('rxjs/add/observable/fromArray');
+    require('rxjs/add/observable/fromEvent');
 
 } else {
     // Reflect Polyfill
