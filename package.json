@@ -22,8 +22,8 @@
     "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached && npm run build:sass",
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --progress --profile --colors --display-error-details --display-cached  --content-base dist/",
-    "server:prod": "http-server dist --cors",
-    "start": "npm run server:prod",
+    "server:prod:old": "http-server dist --cors",
+    "start": "node server.js",
     "bower-install": "bower install",
     "typings-install": "typings install",
     "postinstall": "npm run bower-install && npm run typings-install"
@@ -33,6 +33,7 @@
     "Mikkel Damm <mikkeldamm@hotmail.com>"
   ],
   "dependencies": {
+    "express": "^4.13.4",
     "http-server": "^0.8.5"
   },
   "devDependencies": {
