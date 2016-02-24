@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 @import '../bower_components/foundation-sites/scss/foundation.scss';
 
@@ -31,11 +30,6 @@ h1 {
     
     margin: 0 0 0.5em 0;
     color: #395654;
-}
-
-#header {
-    
-    
 }
 
 @import './app/components/navigation/navigation';
