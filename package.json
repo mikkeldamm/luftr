@@ -19,11 +19,11 @@
     "prebuild:dev": "npm run clean:dist",
     "build:dev": "webpack --progress --profile --colors --display-error-details --display-cached",
     "prebuild:prod": "npm run clean:dist",
-    "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached",
+    "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached && npm run build:sass",
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --progress --profile --colors --display-error-details --display-cached  --content-base dist/",
     "server:prod": "http-server dist --cors",
-    "start": "npm run server:dev",
+    "start": "npm run server:prod",
     "bower-install": "bower install",
     "typings-install": "typings install",
     "postinstall": "npm run bower-install && npm run typings-install"
