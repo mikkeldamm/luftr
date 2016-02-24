@@ -113,7 +113,7 @@ module.exports = {
         new OccurenceOrderPlugin(true),
         new CommonsChunkPlugin({
             name: 'vendor',
-            filename: 'vendor.[chunkhash].bundle.js',
+            filename: 'vendor.bundle.js',
             chunks: Infinity
         }),
         // static assets
