@@ -1,0 +1,6 @@
+<div class="scene-field-city column small-12 medium-5 large-7">              
+    <input type="text" placeholder="Hvor søger du henne? (postnr. eller by)" [ngFormControl]="termCity" />
+    <ul [ngClass]="{hide:!showCities}">
+        <li *ngFor="#city of cities | async" id="{{city.zip}}">{{city.text}}</li>
+    </ul>
+</div>
