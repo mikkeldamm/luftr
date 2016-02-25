@@ -23,7 +23,7 @@ export class SceneCityAutocomplete {
     constructor(private elementRef: ElementRef, private cityAutocompleteService: SceneCityAutocompleteService) {
 
         this.cities = this.termCity.valueChanges
-            .debounceTime(400)
+            .debounceTime(300)
             .distinctUntilChanged()
             .switchMap((term: string) => this.cityAutocompleteService.search(term));
 

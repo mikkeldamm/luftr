@@ -17,7 +17,7 @@
     "build:sass": "node-sass --include-path scss ./src/browser.scss ./dist/styles/browser.css",
     "build": "npm run build:dev && npm run build:sass",
     "prebuild:dev": "npm run clean:dist",
-    "build:dev": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "build:dev": "webpack --progress --profile --colors --display-error-details --display-cached && npm run build:sass",
     "prebuild:prod": "npm run clean:dist",
     "build:prod": "webpack --config webpack.prod.config.js --progress --profile --colors --display-error-details --display-cached && npm run build:sass",
     "server": "npm run server:dev",

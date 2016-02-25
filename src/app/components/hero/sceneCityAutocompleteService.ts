@@ -18,8 +18,6 @@ export class SceneCityAutocompleteService {
         
         if (term) {
             
-            console.log("sfsf");
-        
             return this.jsonp
                         .get('https://dawa.aws.dk/postnumre/autocomplete?callback=JSONP_CALLBACK', { search })
                         .map((request) => request.json())
