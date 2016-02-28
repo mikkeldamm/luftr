@@ -1,5 +1,5 @@
 import {Component, Directive, ElementRef, Renderer, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {Hero} from './components/hero/hero';
 import {Logo} from './components/logo/logo';
@@ -7,6 +7,7 @@ import {Navigation} from './components/navigation/navigation';
 import {Footer} from './components/footer/footer';
 
 import {Home} from './components/home/home';
+import {Login} from './components/login/login';
 
 @Component({
     selector: 'app',
@@ -21,9 +22,20 @@ import {Home} from './components/home/home';
     template: require('./app.html')
 })
 @RouteConfig([
-    { path: '/', component: Home, name: 'Home' }
+    { path: '/', component: Home, name: 'Home', useAsDefault: true },
+    { path: '/login', component: Login, name: 'Login' }
 ])
 export class App {
-    constructor() {
+    
+    shouldEnlarge: boolean = false;
+    shouldShowScene: boolean = false;
+    
+    constructor(public router: Router) {
+        
+        router.subscribe((url) => {
+            
+            this.shouldEnlarge = url === "";
+            this.shouldShowScene = url === "";
+        });
     }
 }

@@ -1,0 +1,21 @@
+<div id="login" class="row">
+    <div class="column small-12 login-text">
+        <h1>Log ind</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque, vero minima aspernatur ducimus
+            veniam porro natus cupiditate reiciendis sequi possimus modi magnam maxime quos, dolore aut. Lorem ipsum dolor
+            sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque.
+        </p>
+        <form role="form" [ngFormModel]="loginForm" (submit)="login($event)">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" ngControl="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>

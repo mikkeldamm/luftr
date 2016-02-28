@@ -1,13 +1,31 @@
 #hero {
     
-    height: 510px;
+    height: 220px;
     position: relative;
+    transition: height .15s ease-in;
     
     .hero-image {
         
         background-image: url('/assets/images/hero_web.jpg');
         background-size: cover;
+        background-position: center -160px;
         height: 100%;
+        transition: background-position .15s ease-in;
+    }
+    
+    &.enlarged {
+        
+        height: 510px;
+        
+        .hero-image {
+            
+            background-position: inherit;
+        }
+        
+        #scene {
+            
+            padding: 2em;
+        }
     }
 }
 
@@ -20,7 +38,7 @@
     bottom: 0px;
     position: absolute;
     background-color: rgba(28,28,29,0.3);
-    padding: 2em;
+    padding: 1em;
     font-size: 1.1em;
     
     .scene-fields {

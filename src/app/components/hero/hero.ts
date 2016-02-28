@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, Input} from 'angular2/core';
 
 import {SceneCityAutocomplete} from './sceneCityAutocomplete';
 
@@ -9,6 +9,10 @@ import {SceneCityAutocomplete} from './sceneCityAutocomplete';
     directives: [SceneCityAutocomplete]
 })
 export class Hero {
+    
+    @Input() enlarge: boolean;
+    @Input() showScene: boolean;
+    
     constructor() {
     }
 }
