@@ -6,6 +6,8 @@
             veniam porro natus cupiditate reiciendis sequi possimus modi magnam maxime quos, dolore aut. Lorem ipsum dolor
             sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque.
         </p>
+        <button (click)="loginWithFacebook()">Facebook</button>
+        <button (click)="loginWithGoogle()">Google</button>
         <form role="form" [ngFormModel]="loginForm" (submit)="login($event)">
             <div class="form-group">
                 <label for="email">Email</label>

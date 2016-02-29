@@ -8,6 +8,7 @@ import {Footer} from './components/footer/footer';
 
 import {Home} from './components/home/home';
 import {Login} from './components/login/login';
+import {LoginAuth} from './components/login/loginAuth';
 
 @Component({
     selector: 'app',
@@ -23,7 +24,8 @@ import {Login} from './components/login/login';
 })
 @RouteConfig([
     { path: '/', component: Home, name: 'Home', useAsDefault: true },
-    { path: '/login', component: Login, name: 'Login' }
+    { path: '/login', component: Login, name: 'Login' },
+    { path: '/login/oauth', component: LoginAuth, name: 'LoginAuth' }
 ])
 export class App {
     

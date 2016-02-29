@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
-import {RouteConfig, Router, ROUTER_DIRECTIVES, CanActivate} from 'angular2/router';
-import {Http, Headers} from 'angular2/http';
+import {RouteConfig, Router, RouteParams, ROUTER_DIRECTIVES, CanActivate, Location} from 'angular2/router';
+import {Http, Headers, URLSearchParams} from 'angular2/http';
 
 import {AuthHttp, JwtHelper} from 'angular2-jwt';
 
@@ -14,9 +14,11 @@ import {AuthHttp, JwtHelper} from 'angular2-jwt';
 export class Login {
 
     loginForm: ControlGroup;
-    jwtHelper: JwtHelper = new JwtHelper();
 
-    constructor(private _http: Http, formBuilder: FormBuilder) {
+    constructor(
+        private _http: Http, 
+        private _location: Location, 
+        formBuilder: FormBuilder) {
 
         this.loginForm = formBuilder.group({
             email: ["", Validators.required],
@@ -54,5 +56,19 @@ export class Login {
                     console.log(error.text());
                 }
             );
+    }
+    
+    loginWithFacebook() {
+        
+        let url = "https://lufer.eu.auth0.com/authorize?response_type=token&client_id=RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT&connection=facebook&redirect_uri=http://localhost:3000/login/oauth";
+        
+        window.location.href = url;
+    }
+    
+    loginWithGoogle() {
+        
+        let url = "https://lufer.eu.auth0.com/authorize?response_type=token&client_id=RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT&connection=google-oauth2&redirect_uri=http://localhost:3000/login/oauth";
+        
+        window.location.href = url;
     }
 }
