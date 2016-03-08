@@ -1,9 +1,11 @@
 import {Component} from 'angular2/core';
-import {FormBuilder, Validators, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
-import {RouteConfig, Router, RouteParams, ROUTER_DIRECTIVES, CanActivate, Location} from 'angular2/router';
+import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
+import {ROUTER_DIRECTIVES, OnActivate, ComponentInstruction} from 'angular2/router';
 import {Http, Headers, URLSearchParams} from 'angular2/http';
 
+import {EmailValidator, PasswordValidator} from '../../validation/formValidators';
 import {AuthHttp, JwtHelper} from 'angular2-jwt';
+import {AuthState, SocialAuth} from '../../state/authState';
 
 @Component({
     selector: 'login',
@@ -13,62 +15,104 @@ import {AuthHttp, JwtHelper} from 'angular2-jwt';
 })
 export class Login {
 
+    email: Control;
+    password: Control;
     loginForm: ControlGroup;
 
     constructor(
         private _http: Http, 
-        private _location: Location, 
-        formBuilder: FormBuilder) {
+        private _authState: AuthState,
+        private _formBuilder: FormBuilder) {
 
-        this.loginForm = formBuilder.group({
-            email: ["", Validators.required],
-            password: ["", Validators.required]
+        this.email = new Control("", Validators.compose([Validators.required, EmailValidator.invalidEmail]));
+        this.password = new Control("", Validators.required);
+        
+        this.loginForm = this._formBuilder.group({
+            email: this.email,
+            password: this.password
         });
+    }
+    
+    routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction) {
+        
+        return new Promise<boolean>(
+            (resolve, reject) => {
+                
+                let authHash = window.location.hash;
+                if (authHash) {
+                    
+                    authHash = authHash.substr(1);
+                    
+                    let params = new URLSearchParams(authHash);
+                    let accessToken = params.get("access_token");
+                    
+                    if (accessToken) {
+                        
+                        this.setAuthenticatedState(accessToken);
+                        this.redirectAfterAuthenticated();
+                        
+                        resolve(true);
+                        return;
+                    }
+                }
+                
+                // show error message in view
+                resolve(true);
+            }
+        );
     }
 
     login(event) {
         
         event.preventDefault();
         
-        let email = this.loginForm.controls["email"].value;
-        let password = this.loginForm.controls["password"].value;
+        if (this.loginForm.valid) {
         
-        const contentHeaders = new Headers();
-        contentHeaders.append('Accept', 'application/json');
-        contentHeaders.append('Content-Type', 'application/json');
-        
-        let body = JSON.stringify({
-            username: email, 
-            password: password,
-            "client_id": "RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT",
-            "connection":  "Username-Password-Authentication",
-            "grant_type": "password",
-            "scope": "openid",
-            "device": ""
-        });
-        
-        this._http.post('https://lufer.eu.auth0.com/oauth/ro', body, { headers: contentHeaders })
-            .subscribe(
-                response => {
-                    console.log(response);
+            const contentHeaders = new Headers();
+            contentHeaders.append('Accept', 'application/json');
+            contentHeaders.append('Content-Type', 'application/json');
+            
+            let body = JSON.stringify({
+                "username": this.email.value, 
+                "password": this.password.value,
+                "client_id": this._authState.authClientId,
+                "connection":  "Username-Password-Authentication",
+                "grant_type": "password",
+                "scope": "openid",
+                "device": ""
+            });
+            
+            this._http.post(this._authState.authDomain + '/oauth/ro', body, { headers: contentHeaders })
+                .map(response => response.json())
+                .subscribe((response:any) => {
+                        
+                    this.setAuthenticatedState(response.access_token);
+                    this.redirectAfterAuthenticated();
                 },
                 error => {
+                    
                     console.log(error.text());
-                }
-            );
+                });
+        }
     }
     
-    loginWithFacebook() {
+    facebookLink() {
         
-        let url = "https://lufer.eu.auth0.com/authorize?response_type=token&client_id=RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT&connection=facebook&redirect_uri=http://localhost:3000/login/oauth";
+        return this._authState.getSocialOAuthUrl(SocialAuth.facebook);
+    }
+
+    googleLink() {
         
-        window.location.href = url;
+        return this._authState.getSocialOAuthUrl(SocialAuth.google);
     }
     
-    loginWithGoogle() {
+    redirectAfterAuthenticated() {
         
-        let url = "https://lufer.eu.auth0.com/authorize?response_type=token&client_id=RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT&connection=google-oauth2&redirect_uri=http://localhost:3000/login/oauth";
+        window.location.href = "/";
+    }
+    
+    setAuthenticatedState(token: string) {
         
-        window.location.href = url;
+        this._authState.setAuthenticated(token);
     }
 }

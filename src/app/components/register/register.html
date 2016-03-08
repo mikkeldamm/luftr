@@ -8,8 +8,8 @@
         </p>
         <a [href]="facebookLink()">Facebook</a>
         <a [href]="googleLink()">Google</a>
-        <form class="form-container" role="form" [ngFormModel]="loginForm" (submit)="login($event)">
-           <div class="form-group">
+        <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="login($event)">
+            <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email">
                 <div *ngIf="email.dirty && !email.valid && email.touched">
@@ -24,7 +24,14 @@
                     <p *ngIf="password.errors.required">Password is required.</p>
                 </div>
             </div>
-            <button type="submit" [ngClass]="{'disabled': !loginForm.valid}">Submit</button>
+            <div class="form-group">
+                <label for="passwordConfirm">Password Confirm</label>
+                <input type="password" ngControl="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password confirm">
+                <div *ngIf="passwordConfirm.dirty && !passwordConfirm.valid && passwordConfirm.touched">
+                    <p *ngIf="passwordConfirm.errors.notEquivalent">Passwords doens't match.</p>
+                </div>
+            </div>
+            <button type="submit" [ngClass]="{'disabled': !registerForm.valid}">Submit</button>
         </form>
     </div>
 </div>
