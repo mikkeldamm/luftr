@@ -4,7 +4,7 @@ var helpers = require('./helpers');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var ENV = process.env.ENV = process.env.NODE_ENV = 'local';
+var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 var metadata = {
   title: 'Luftr',
@@ -87,14 +87,6 @@ module.exports = {
     emitErrors: false,
     failOnHint: false,
     resourcePath: 'src'
-  },
-  // our Webpack Development Server config
-  devServer: {
-    port: metadata.port,
-    host: metadata.host,
-    contentBase: 'dist/',
-    historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 }
   },
   // we need this due to problems with es6-shim
   node: {global: 'window', progress: false, crypto: 'empty', module: false, clearImmediate: false, setImmediate: false}

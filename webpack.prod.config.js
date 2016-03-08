@@ -1,10 +1,4 @@
-// @AngularClass
-
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
-var path = require('path');
-var zlib = require('zlib');
+var helpers = require('./helpers');
 // Webpack Plugins
 var webpack = require('webpack');
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
@@ -16,7 +10,7 @@ var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackMd5Hash = require('webpack-md5-hash');
+var WebpackMd5Hash    = require('webpack-md5-hash');
 var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 var HOST = process.env.HOST || 'localhost';
 var PORT = process.env.PORT || 8080;
@@ -44,164 +38,193 @@ module.exports = {
         'browser': './src/browser.ts' // our angular app
     },
 
-    // Config for our build files
-    output: {
-        path: root('dist'),
-        filename: '[name].bundle.js',
-        sourceMapFilename: '[name].map',
-        chunkFilename: '[id].chunk.js'
-    },
+  // Config for our build files
+  output: {
+    path: helpers.root('dist'),
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].bundle.map',
+    chunkFilename: '[id].chunk.js'
+  },
 
-    resolve: {
-        cache: false,
-        // ensure loader extensions match
-        extensions: prepend(['.ts', '.js', '.json', '.css', '.html'], '.async') // ensure .async.ts etc also works
-    },
+  resolve: {
+    extensions: ['', '.ts', '.js']
+  },
 
-    module: {
-        preLoaders: [
-            {
-                test: /\.js$/,
-                loader: "source-map-loader",
-                exclude: [
-                    root('node_modules/rxjs')
-                ]
-            }
-        ],
-        loaders: [
-            // Support Angular 2 async routes via .async.ts
-            {
-                test: /\.async\.ts$/,
-                loaders: ['es6-promise-loader', 'ts-loader'],
-                exclude: [/\.(spec|e2e)\.ts$/]
-            },
-            // Support for .ts files.
-            {
-                test: /\.ts$/,
-                loader: 'ts-loader',
-                query: {
-                    // remove TypeScript helpers to be injected below by DefinePlugin
-                    'compilerOptions': {
-                        'removeComments': true,
-                        'noEmitHelpers': true,
-                    }
-                },
-                exclude: [/\.(spec|e2e|async)\.ts$/]
-            },
-
-            // Support for *.json files.
-            { test: /\.json$/, loader: 'json-loader' },
-
-            // Support for CSS as raw text
-            { test: /\.css$/, loader: 'raw-loader' },
-
-            // support for .html as raw text
-            { test: /\.html$/, loader: 'raw-loader', exclude: [root('src/index.html')] },
-            
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
-            }
-
-            // if you add a loader include the file extension
+  module: {
+    preLoaders: [
+      {
+        test: /\.ts$/,
+        loader: 'tslint-loader',
+        exclude: [
+          helpers.root('node_modules')
         ]
-    },
-
-    plugins: [
-        new DedupePlugin(),
-        new OccurenceOrderPlugin(true),
-        new CommonsChunkPlugin({
-            name: 'vendor',
-            filename: 'vendor.bundle.js',
-            chunks: Infinity
-        }),
-        // static assets
-        new CopyWebpackPlugin([
-            {
-                from: 'src/assets',
-                to: 'assets'
-            }
-        ]),
-        // generating html
-        new HtmlWebpackPlugin({ template: 'src/index.html' }),
-        new DefinePlugin({
-            // Environment helpers
-            'process.env': {
-                'ENV': JSON.stringify(metadata.ENV),
-                'NODE_ENV': JSON.stringify(metadata.ENV)
-            }
-        }),
-        new ProvidePlugin({
-            // TypeScript helpers
-            '__metadata': 'ts-helper/metadata',
-            '__decorate': 'ts-helper/decorate',
-            '__awaiter': 'ts-helper/awaiter',
-            '__extends': 'ts-helper/extends',
-            '__param': 'ts-helper/param',
-            'Reflect': 'es7-reflect-metadata/src/global/browser'
-        }),
-        new UglifyJsPlugin({
-            // to debug prod builds uncomment //debug lines and comment //prod lines
-
-            // beautify: true,//debug
-            // mangle: false,//debug
-            // dead_code: false,//debug
-            // unused: false,//debug
-            // deadCode: false,//debug
-            // compress : { screw_ie8 : true, keep_fnames: true, drop_debugger: false, dead_code: false, unused: false, }, // debug
-            // comments: true,//debug
-
-            beautify: false,//prod
-            // disable mangling because of a bug in angular2 beta.1, beta.2 and beta.3
-            // TODO(mastertinner): enable mangling as soon as angular2 beta.4 is out
-            // mangle: { screw_ie8 : true },//prod
-            mangle: false,
-            compress: { screw_ie8: true },//prod
-            comments: false//prod
-
-        }),
-        // include uglify in production
-        new CompressionPlugin({
-            algorithm: gzipMaxLevel,
-            regExp: /\.css$|\.html$|\.js$|\.map$/,
-            threshold: 2 * 1024
-        })
+      },
+      {
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: [
+          helpers.root('node_modules/rxjs')
+        ]
+      }
     ],
-    // don't use devServer for production
+    loaders: [
+      // Support Angular 2 async routes via .async.ts
+      // Support for .ts files.
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+        query: {
+          // remove TypeScript helpers to be injected below by DefinePlugin
+          'compilerOptions': {
+            'removeComments': true
+          }
+        },
+        exclude: [
+          /\.(spec|e2e)\.ts$/,
+          helpers.root('node_modules')
+        ]
+      },
 
-    // we need this due to problems with es6-shim
-    node: {
-        global: 'window',
-        progress: false,
-        crypto: 'empty',
-        module: false,
-        clearImmediate: false,
-        setImmediate: false
-    }
+      // Support for *.json files.
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+        exclude: [ helpers.root('node_modules') ]
+      },
+
+      // Support for CSS as raw text
+      {
+        test: /\.css$/,
+        loader: 'raw-loader',
+        exclude: [ helpers.root('node_modules') ]
+      },
+
+      // support for .html as raw text
+      {
+        test: /\.html$/,
+        loader: 'raw-loader',
+        exclude: [
+          helpers.root('src/index.html')
+        ]
+      },
+      
+      {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loaders: ["raw-loader", "sass-loader"] // sass-loader not scss-loader
+      }
+
+    ],
+    noParse: [
+      helpers.root('zone.js', 'dist'),
+      helpers.root('angular2', 'bundles')
+    ]
+
+  },
+
+  plugins: [
+    new WebpackMd5Hash(),
+    new DedupePlugin(),
+    new OccurenceOrderPlugin(true),
+    new CommonsChunkPlugin({
+      name: 'polyfills',
+      filename: 'polyfills.[chunkhash].bundle.js',
+      chunks: Infinity
+    }),
+    // static assets
+    new CopyWebpackPlugin([
+      {
+        from: 'src/assets',
+        to: 'assets'
+      }
+    ]),
+    // generating html
+    new HtmlWebpackPlugin({ template: 'src/index.html' }),
+    new DefinePlugin({
+      // Environment helpers
+      'process.env': {
+        'ENV': JSON.stringify(metadata.ENV),
+        'NODE_ENV': JSON.stringify(metadata.ENV)
+      }
+    }),
+    new UglifyJsPlugin({
+      // to debug prod builds uncomment //debug lines and comment //prod lines
+
+      // beautify: true,//debug
+      // mangle: false,//debug
+      // dead_code: false,//debug
+      // unused: false,//debug
+      // deadCode: false,//debug
+      // compress : { screw_ie8 : true, keep_fnames: true, drop_debugger: false, dead_code: false, unused: false, }, // debug
+      // comments: true,//debug
+
+      beautify: false,//prod
+      // disable mangling because of a bug in angular2 beta.1, beta.2 and beta.3
+      // TODO(mastertinner): enable mangling as soon as angular2 beta.4 is out
+      // mangle: { screw_ie8 : true },//prod
+      mangle: {
+        screw_ie8 : true,
+        except: [
+          'RouterActive',
+          'RouterLink',
+          'RouterOutlet',
+          'NgFor',
+          'NgIf',
+          'NgClass',
+          'NgSwitch',
+          'NgStyle',
+          'NgSwitchDefault',
+          'NgModel',
+          'NgControl',
+          'NgFormControl',
+          'NgForm',
+          'AsyncPipe',
+          'DatePipe',
+          'JsonPipe',
+          'NumberPipe',
+          'DecimalPipe',
+          'PercentPipe',
+          'CurrencyPipe',
+          'LowerCasePipe',
+          'UpperCasePipe',
+          'SlicePipe',
+          'ReplacePipe',
+          'I18nPluralPipe',
+          'I18nSelectPipe'
+        ] // needed for uglify RouterLink problem
+      },// prod
+      compress : { screw_ie8 : true },//prod
+      comments: false//prod
+
+    }),
+   // include uglify in production
+    new CompressionPlugin({
+      algorithm: helpers.gzipMaxLevel,
+      regExp: /\.css$|\.html$|\.js$|\.map$/,
+      threshold: 2 * 1024
+    })
+  ],
+  // Other module loader config
+  tslint: {
+    emitErrors: true,
+    failOnHint: true,
+    resourcePath: 'src',
+  },
+
+  htmlLoader: {
+    minimize: true,
+    removeAttributeQuotes: false,
+    caseSensitive: true,
+    customAttrSurround: [ [/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/] ],
+    customAttrAssign: [ /\)?\]?=/ ]
+  },
+  // don't use devServer for production
+  node: {
+    global: 'window',
+    progress: false,
+    crypto: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
+  }
 };
-
-// Helper functions
-function gzipMaxLevel(buffer, callback) {
-    return zlib['gzip'](buffer, { level: 9 }, callback)
-}
-
-function root(args) {
-    args = Array.prototype.slice.call(arguments, 0);
-    return path.join.apply(path, [__dirname].concat(args));
-}
-
-function rootNode(args) {
-    args = Array.prototype.slice.call(arguments, 0);
-    return root.apply(path, ['node_modules'].concat(args));
-}
-
-function prepend(extensions, args) {
-    args = args || [];
-    if (!Array.isArray(args)) { args = [args] }
-    return extensions.reduce(function (memo, val) {
-        return memo.concat(val, args.map(function (prefix) {
-            return prefix + val
-        }));
-    }, ['']);
-}
