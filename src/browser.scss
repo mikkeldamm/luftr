@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,600);
 
 @import '../bower_components/foundation-sites/scss/foundation.scss';
 
@@ -7,7 +7,7 @@
 
 body {
     
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Poppins', sans-serif;
 }
 
 body, p, h2, h3, h4 {
@@ -30,6 +30,18 @@ h1 {
     
     margin: 0 0 0.5em 0;
     color: #395654;
+}
+
+#header {
+    
+    height: 65px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#main {
+    
+    height: 410px;
+    visibility: hidden;
 }
 
 @import './app/components/navigation/navigation';

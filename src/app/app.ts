@@ -8,7 +8,8 @@ import {Footer} from './components/footer/footer';
 
 import {Home} from './components/home/home';
 import {Login} from './components/login/login';
-import {Register} from './components/register/register';
+import {RegisterUser} from './components/register/registerUser';
+import {Profile} from './components/profile/profile';
 
 @Component({
     selector: 'app',
@@ -26,7 +27,8 @@ import {Register} from './components/register/register';
     { path: '/', component: Home, name: 'Home', useAsDefault: true },
     { path: '/login', component: Login, name: 'Login' },
     { path: '/login/oauth', component: Login, name: 'LoginAuth' },
-    { path: '/register', component: Register, name: 'Register' }
+    { path: '/register', component: RegisterUser, name: 'RegisterUser' },
+    { path: '/profile/...', component: Profile, name: 'Profile' }
 ])
 export class App {
     

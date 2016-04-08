@@ -1,16 +1,13 @@
-<div id="hero" [ngClass]="{enlarged: enlarge}">
-    <div class="hero-image">
-        <div id="scene" *ngIf="showScene">
-            <div class="scene-fields">
-                <scene-city-autocomplete></scene-city-autocomplete>
-                <div class="scene-field-days column small-12 medium-4 large-3">
-                    <input type="text" placeholder="Alle dage" />
-                </div>
-                <div class="scene-field-button column small-12 medium-3 large-2">
-                    <button>
-                        Søg
-                    </button>
-                </div>
+<div id="hero">
+    <div class="hero-image"></div>
+    <div id="scene">
+        <div class="scene-fields">
+            <scene-city-autocomplete></scene-city-autocomplete>
+            <div class="scene-field-days column small-12 medium-4 large-3">
+                <input type="text" placeholder="Alle dage" />
+            </div>
+            <div class="scene-field-button column small-12 medium-3 large-2">
+                <button>Søg</button>
             </div>
         </div>
     </div>

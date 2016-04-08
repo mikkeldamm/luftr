@@ -7,12 +7,12 @@ import {EmailValidator, PasswordValidator} from '../../validation/formValidators
 import {AuthState, SocialAuth} from '../../state/authState';
 
 @Component({
-    selector: 'register',
+    selector: 'registerUser',
     directives: [FORM_DIRECTIVES],
-    styles: [require('./register.scss')],
-    template: require('./register.html')
+    styles: [require('./registerUser.scss')],
+    template: require('./registerUser.html')
 })
-export class Register {
+export class RegisterUser {
 
     email: Control;
     password: Control;
@@ -38,7 +38,7 @@ export class Register {
         });
     }
 
-    login(event) {
+    register(event) {
 
         event.preventDefault();
         
@@ -52,7 +52,7 @@ export class Register {
                 "password": this.password.value,
                 "client_id": this._authState.authClientId,
                 "connection": "Username-Password-Authentication"
-            });
+            }); 
 
             this._http.post(this._authState.authDomain + '/dbconnections/signup', body, { headers: contentHeaders })
                 .subscribe((response: any) => {

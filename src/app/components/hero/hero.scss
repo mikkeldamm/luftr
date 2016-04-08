@@ -1,36 +1,20 @@
 #hero {
     
-    height: 220px;
+    height: 300px;
     position: relative;
-    transition: height .15s ease-in;
     
     .hero-image {
         
-        background-image: url('/assets/images/hero_web.jpg');
+        background-image: url('/assets/images/hero1_x1-min.jpg');
         background-size: cover;
-        background-position: center -160px;
+        background-position: center;
         height: 100%;
-        transition: background-position .15s ease-in;
-    }
-    
-    &.enlarged {
-        
-        height: 510px;
-        
-        .hero-image {
-            
-            background-position: inherit;
-        }
-        
-        #scene {
-            
-            padding: 2em;
-        }
     }
 }
 
 #scene {
     
+    display: none;
     margin: 0 auto;
     text-align: center;
     left: 0;

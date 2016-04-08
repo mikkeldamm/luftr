@@ -1,5 +1,5 @@
-<div id="login" class="row">
-    <div class="column small-12 login-text">
+<div id="register" class="row">
+    <div class="column small-12 register-text">
         <h1>Log ind</h1>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque, vero minima aspernatur ducimus
@@ -8,7 +8,7 @@
         </p>
         <a [href]="facebookLink()">Facebook</a>
         <a [href]="googleLink()">Google</a>
-        <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="login($event)">
+        <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email">

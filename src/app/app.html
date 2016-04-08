@@ -1,8 +1,10 @@
 <header id="header">
-    <logo></logo>
+    <logo id="logo"></logo>
     <nav id="navigation"></nav>
-    <hero [enlarge]="shouldEnlarge" [showScene]="shouldShowScene"></hero>
 </header>
+<section id="top">
+    <hero [enlarge]="shouldEnlarge" [showScene]="shouldShowScene"></hero>
+</section>
 <main id="main">
     <router-outlet></router-outlet>
 </main>

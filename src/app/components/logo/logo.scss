@@ -1,16 +1,12 @@
 #logo {
  	  
-    background-color: #fceab4;
-    z-index: 100;
+    height: 30px;
     position: absolute;
-    padding: 0.8em;
-    top: 2em;
-    left: 2em;
-    display: inline-block;
+    top: 1em;
+    left: 1em;
        
     svg {
         
-        height: 26px;
-        display: block;
+        height: 100%;
     }
 }

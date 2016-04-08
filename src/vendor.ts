@@ -1,39 +1,30 @@
-// Polyfills
-// import 'ie-shim';
-import 'es6-shim';
-// (these modules are what are in 'angular2/bundles/angular2-polyfills' so don't use that here)
-import 'es6-promise';
-import 'es7-reflect-metadata';
-import 'zone.js/dist/zone-microtask';
+// For vendors for example jQuery, Lodash, angular2-jwt just import them here unless you plan on
+// chunking vendors files for async loading. You would need to import the async loaded vendors
+// at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
+// run `typings install x` where `x` is your module
 
-if ('production' === process.env.ENV) {
-    // Production
+// Angular 2
+import 'angular2/platform/browser';
+import 'angular2/core';
+import 'angular2/http';
+import 'angular2/router';
 
-    // RxJS
-    // In production manually include the operators you use
-    require('rxjs/add/operator/map');
-    require('rxjs/add/operator/debounceTime');
-    require('rxjs/add/operator/distinctUntilChanged');
-    require('rxjs/add/operator/switchMap');
-    require('rxjs/add/observable/from');
-    require('rxjs/add/observable/fromArray');
-    require('rxjs/add/observable/fromEvent');
+// RxJS
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/fromArray';
+import 'rxjs/add/observable/fromEvent';
+
+if ('production' === ENV) {
+  // Production
+
 
 } else {
-    // Development
-
-    Error['stackTraceLimit'] = Infinity;
-
-    require('zone.js/dist/long-stack-trace-zone');
-
-    // RxJS
-    // In production manually include the operators you use
-    require('rxjs/add/operator/map');
-    require('rxjs/add/operator/debounceTime');
-    require('rxjs/add/operator/distinctUntilChanged');
-    require('rxjs/add/operator/switchMap');
-    require('rxjs/add/observable/from');
-    require('rxjs/add/observable/fromArray');
-    require('rxjs/add/observable/fromEvent');
+  // Development
 
 }
