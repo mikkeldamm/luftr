@@ -1,5 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:400,600);
 
+@font-face {
+    font-family: 'Webnar-Bold';
+    src: url('/assets/fonts/30D827_0_0.eot');
+    src: url('/assets/fonts/30D827_0_0.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/30D827_0_0.woff2') format('woff2'),
+        url('/assets/fonts/30D827_0_0.woff') format('woff'),
+        url('/assets/fonts/30D827_0_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'KatahdinRound-Bold';
+    src: url('/assets/fonts/KatahdinRound-Bold.eot');
+    src: url('/assets/fonts/KatahdinRound-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/KatahdinRound-Bold.woff2') format('woff2'),
+        url('/assets/fonts/KatahdinRound-Bold.woff') format('woff'),
+        url('/assets/fonts/KatahdinRound-Bold.ttf') format('truetype');
+}
+
 @import '../bower_components/foundation-sites/scss/foundation.scss';
 
 @include foundation-global-styles;
@@ -34,8 +52,12 @@ h1 {
 
 #header {
     
-    height: 65px;
     font-family: 'Poppins', sans-serif;
+    
+    .column {
+        
+        position: relative;
+    }
 }
 
 #main {

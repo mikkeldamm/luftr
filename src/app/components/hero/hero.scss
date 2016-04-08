@@ -14,14 +14,13 @@
 
 #scene {
     
-    display: none;
     margin: 0 auto;
     text-align: center;
     left: 0;
     right: 0;
     bottom: 0px;
     position: absolute;
-    background-color: rgba(28,28,29,0.3);
+    background-color: #EBD494;
     padding: 1em;
     font-size: 1.1em;
     
@@ -66,7 +65,7 @@
         button {
             
             color: #FFF;
-            background-color: #41A79E;
+            background-color: #5D7BA2;
             border-radius: 0 1px 1px 0;
             transition: background-color 0.1s ease;
             

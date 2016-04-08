@@ -1,9 +1,16 @@
 #logo {
  	  
-    height: 30px;
-    position: absolute;
-    top: 1em;
-    left: 1em;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    display: inline-block;
+      
+    a {
+        
+        height: 38px;
+        line-height: 38px;
+        display: block;
+    }
        
     svg {
         
