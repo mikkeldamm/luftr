@@ -94,7 +94,7 @@
     "webpack-md5-hash": "^0.0.5",
     "ie-shim": "^0.1.0",
     
-    "bower": "^1.7.7",
+    "bower": "^1.7.9",
     "sass-loader": "^3.1.2",
     "node-sass": "^3.4.2",
     "extract-text-webpack-plugin": "^1.0.1"

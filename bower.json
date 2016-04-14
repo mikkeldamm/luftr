@@ -17,9 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "foundation-sites": "~6.2.0"
-  },
-  "resolutions": {
-    "jquery": "~1.11.1"
+    "foundation-sites": "~6.2.1"
   }
 }
