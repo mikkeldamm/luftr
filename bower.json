@@ -18,5 +18,8 @@
   ],
   "dependencies": {
     "foundation-sites": "~6.2.1"
+  },
+  "resolutions": {
+    "jquery": "2.2.3"
   }
 }
