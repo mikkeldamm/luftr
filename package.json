@@ -15,7 +15,6 @@
     "clean:start": "npm start",
     "watch:sass": "node-sass --watch --include-path scss ./src/browser.scss ./dist/assets/browser.css",
     "build:sass": "node-sass --include-path scss ./src/browser.scss ./dist/assets/browser.css",
-    
     "build": "npm run build:dev",
     "prebuild-dev": "npm run clean:dist && npm run build:sass",
     "build-dev": "node --max-old-space-size=4096 ./node_modules/webpack/bin/webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
@@ -25,7 +24,6 @@
     "server:dev": "node --max-old-space-size=4096 ./node_modules/webpack-dev-server/bin/webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base dist/",
     "server:dev:hmr": "npm run server:dev -- --hot",
     "server:prod:old": "http-server dist --cors",
-    
     "start": "node server.js",
     "bower-install": "bower install",
     "typings-install": "typings install",
@@ -42,14 +40,12 @@
   },
   "devDependencies": {
     "angular2": "2.0.0-beta.11",
-    "core-js": "^2.1.5",
-    "rxjs": "5.0.0-beta.2",
-    "zone.js": "0.6.4",
-    
     "angular2-hmr": "~0.2.2",
     "awesome-typescript-loader": "~0.16.2",
+    "bower": "^1.7.9",
     "compression-webpack-plugin": "^0.3.0",
     "copy-webpack-plugin": "^1.1.1",
+    "core-js": "^2.1.5",
     "css-loader": "^0.23.1",
     "es6-promise": "^3.1.2",
     "es6-promise-loader": "^1.0.1",
@@ -57,9 +53,11 @@
     "es7-reflect-metadata": "^1.6.0",
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.9.0",
     "http-server": "^0.9.0",
+    "ie-shim": "^0.1.0",
     "imports-loader": "^0.6.5",
     "istanbul-instrumenter-loader": "^0.2.0",
     "json-loader": "^0.5.4",
@@ -72,6 +70,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.7.0",
     "ng2lint": "0.0.10",
+    "node-sass": "^3.4.2",
     "parse5": "^1.3.2",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.6",
@@ -79,6 +78,8 @@
     "raw-loader": "0.5.1",
     "remap-istanbul": "^0.5.1",
     "rimraf": "^2.5.2",
+    "rxjs": "5.0.0-beta.2",
+    "sass-loader": "^3.1.2",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helper": "0.0.1",
@@ -92,11 +93,6 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-md5-hash": "^0.0.5",
-    "ie-shim": "^0.1.0",
-    
-    "bower": "^1.7.9",
-    "sass-loader": "^3.1.2",
-    "node-sass": "^3.4.2",
-    "extract-text-webpack-plugin": "^1.0.1"
+    "zone.js": "0.6.4"
   }
 }
