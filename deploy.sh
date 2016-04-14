@@ -116,8 +116,12 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   exitWithMessageOnError "npm failed"
   eval $NPM_CMD run other-install
   exitWithMessageOnError "npm install typings failed"
+  eval $NPM_CMD run clean-dist
+  exitWithMessageOnError "npm clean dist failed"
+  eval $NPM_CMD run build-sass
+  exitWithMessageOnError "npm build sass failed"
   eval $NPM_CMD run build-prod
-  exitWithMessageOnError "npm build failed"
+  exitWithMessageOnError "npm build prod failed"
   cd - > /dev/null
 fi
 
