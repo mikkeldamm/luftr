@@ -20,6 +20,7 @@
     "foundation-sites": "~6.2.1"
   },
   "resolutions": {
-    "jquery": "2.2.3"
+    "jquery": "2.2.3",
+    "what-input": "2.0.1"
   }
 }
