@@ -1,6 +1,6 @@
 #hero {
     
-    height: 300px;
+    height: 380px;
     position: relative;
     
     .hero-image {
@@ -20,7 +20,7 @@
     right: 0;
     bottom: 0px;
     position: absolute;
-    background-color: #EBD494;
+    background-color: #EDEBD7;
     padding: 1em;
     font-size: 1.1em;
     
@@ -29,25 +29,44 @@
         max-width: 800px;
         margin: 0 auto;
         
-        > .column {
+        .no-padding-right {
+            
+            padding-right: 0;
+        }
+        
+        .no-padding-left {
             
             padding-left: 0;
-            padding-right: 0;
+        }
+        
+        > .column {
+            
+            //padding-left: 0;
+            //padding-right: 0;
         }
         
         input, button {
             
+            border: 1px solid #DEDABD;
+            border-radius: 2px 0 0 2px;
             width: 100%;
-            border: 0;
             padding: 0.9em;
             color: #000;
             background-color: #fff;
-            border-radius: 1px;
             line-height: 1.1em;
+            border-top-color: #E6E2C7;
+            border-left-color: #E6E2C7;
+            border-right-color: #EDEBD7;
             
             &:focus {
                 
                 outline: none;
+            }
+            
+            &::-webkit-input-placeholder {
+                
+                color: #9E9E9E;
+                font-size: 0.9em;
             }
         }
     }
@@ -57,6 +76,8 @@
         input {
             
             border-radius: 0;
+            border-right-width: 0;
+            border-left-width: 0;
         }
     }
     
@@ -65,9 +86,10 @@
         button {
             
             color: #FFF;
-            background-color: #5D7BA2;
-            border-radius: 0 1px 1px 0;
+            background-color: #E3B23C;
+            border-radius: 0 2px 2px 0;
             transition: background-color 0.1s ease;
+            border: 1px solid #E3B23C;
             
             &:hover,
             &:active,

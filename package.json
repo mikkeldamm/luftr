@@ -17,8 +17,8 @@
     "build:sass": "node-sass --include-path scss ./src/browser.scss ./dist/assets/browser.css",
     
     "build": "npm run build:dev",
-    "prebuild:dev": "npm run clean:dist && npm run build:sass",
-    "build:dev": "node --max-old-space-size=4096 ./node_modules/webpack/bin/webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
+    "prebuild-dev": "npm run clean:dist && npm run build:sass",
+    "build-dev": "node --max-old-space-size=4096 ./node_modules/webpack/bin/webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
     "prebuild-prod": "npm run clean:dist && npm run build:sass",
     "build-prod": "node --max-old-space-size=4096 ./node_modules/webpack/bin/webpack --config config/webpack.prod.js  --progress --profile --colors --display-error-details --display-cached",
     "server": "npm run server:dev",
