@@ -52,8 +52,8 @@ h1 {
         
         h1 {
             
+            position: relative;
             margin: 0;
-            border-bottom: 2px solid #109DA4;
             display: inline-block;
             padding-bottom: 0.6em;
             line-height: 1em;
@@ -63,6 +63,18 @@ h1 {
             font-size: 1.5em;
             font-weight: 600;
             font-family: 'Open Sans', sans-serif;
+            
+            &:after {
+                
+                content: "";
+                border-bottom: 2px solid #109DA4;
+                min-width: 2em;
+                max-width: 2em;
+                height: 1px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
         }
     }
     
@@ -70,6 +82,7 @@ h1 {
         
         background-color: #fff;
         padding: 1.5em;
+        border-radius: 1px;
     }
 }
 
