@@ -40,6 +40,37 @@ h1 {
 
 #main {
     
+    background-color: #F1F1F1;
+    padding-bottom: 1.6em;
+    
+    .headline {
+        
+        position: relative;
+        width: 100%;
+        background-color: #A8DBDD;
+        margin-bottom: 1.6em;
+        
+        h1 {
+            
+            margin: 0;
+            border-bottom: 2px solid #109DA4;
+            display: inline-block;
+            padding-bottom: 0.6em;
+            line-height: 1em;
+            color: #3A3F40;
+            margin-top: 0.7em;
+            margin-bottom: 0.01em;
+            font-size: 1.5em;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+        }
+    }
+    
+    .content-container {
+        
+        background-color: #fff;
+        padding: 1.5em;
+    }
 }
 
 @import './app/components/navigation/navigation';
