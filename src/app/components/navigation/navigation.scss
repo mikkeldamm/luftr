@@ -2,15 +2,27 @@
     
     position: absolute;
     right: 1em;
-    top: 0;
+    top: 0.8em;
     
     a {
         
         text-decoration: none;
-        margin: 0 0 0 1em;
+        margin: 0 0 0 0.7em;
         display: inline-block;
         text-transform: lowercase;
         color: #20282C;
-        padding: 1.3em 0;
+        padding: 0.7em 1em;
+        border-radius: 2px;
+        font-size: 0.95em;
+        
+        padding-right: 0;
+        padding-left: 0.5em;
+        
+        &.highlighted {
+            
+            background-color: #109DA4;
+            padding: 0.7em 1em;
+            color: #FEFEFE;
+        }
     }
 }

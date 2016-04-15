@@ -10,8 +10,7 @@ import {SceneCityAutocomplete} from './sceneCityAutocomplete';
 })
 export class Hero {
     
-    @Input() enlarge: boolean;
-    @Input() showScene: boolean;
+    @Input() shouldShow: boolean;
     
     constructor() {
     }

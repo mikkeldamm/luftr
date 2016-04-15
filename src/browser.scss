@@ -1,142 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:400,600);
-
-@font-face {
-    font-family: 'Webnar-Bold';
-    src: url('/assets/fonts/30D827_0_0.eot');
-    src: url('/assets/fonts/30D827_0_0.eot?#iefix') format('embedded-opentype'),
-        url('/assets/fonts/30D827_0_0.woff2') format('woff2'),
-        url('/assets/fonts/30D827_0_0.woff') format('woff'),
-        url('/assets/fonts/30D827_0_0.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'KatahdinRound-Bold';
-    src: url('/assets/fonts/KatahdinRound-Bold.eot');
-    src: url('/assets/fonts/KatahdinRound-Bold.eot?#iefix') format('embedded-opentype'),
-        url('/assets/fonts/KatahdinRound-Bold.woff2') format('woff2'),
-        url('/assets/fonts/KatahdinRound-Bold.woff') format('woff'),
-        url('/assets/fonts/KatahdinRound-Bold.ttf') format('truetype');
-}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
 
 @import '../bower_components/foundation-sites/scss/foundation.scss';
 
 @include foundation-global-styles;
 @include foundation-grid;
-
-// orange: #FEC95B;
-/*
-body {
-    
-    font-family: 'Poppins', sans-serif;
-}
-
-#navigation {
-    
-    display: block;
-    position: relative;
-    z-index: 3;
-    
-    .top {
-        
-        background: #80CBCE;
-        height: 10px;
-        position: relative;
-    }
-    
-    .bar {
-        
-        background: #FFF;
-        height: 70px;
-        position: relative;
-        
-        .logo {
-            
-            height: 100%;
-            padding: 1em;
-            
-            a {
-                
-                display: inline-block;
-                height: 100%;
-                
-                svg {
-                    
-                    height: 100%;
-                }
-            }
-        }
-    }
-}
-
-#hero {
-    
-    background-image: url(file:///Users/mikkeldamm/Repos/luftr/src/assets/images/hero1_x1-min.jpg);
-    background-position: center top;
-    margin-top: -80px;
-    position: relative;
-    
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: auto;
-    min-height: 100vh;
-    width: 100%;
-    
-    &:before {
-        
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        background-color: rgba(25,25,25,0.5);
-    }
-}
-
-.search {
-    
-    width: 75em;
-    height: 118px;
-    position: absolute;
-    bottom: 50px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    
-    .label {
-        
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 212px;
-        height: 118px;
-        color: #FFF;
-        font-size: 25px;
-        line-height: 32px;
-        padding: 27px 0 27px 20px;
-        background: #69B8D6;
-        text-transform: uppercase;
-        pointer-events: none;
-        cursor: default;
-        z-index: 2;
-    }
-    
-    .form {
-        
-        padding-left: 222px;
-        padding-right: 10px;
-        background: #FFF;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        height: 118px;
-        z-index: 1;
-    }
-}
-*/
-
 
 body, p, h2, h3, h4 {
     
@@ -172,8 +40,6 @@ h1 {
 
 #main {
     
-    height: 410px;
-    visibility: hidden;
 }
 
 @import './app/components/navigation/navigation';

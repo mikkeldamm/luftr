@@ -1,37 +1,40 @@
-<div id="register" class="row">
-    <div class="column small-12 register-text">
-        <h1>Log ind</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque, vero minima aspernatur ducimus
-            veniam porro natus cupiditate reiciendis sequi possimus modi magnam maxime quos, dolore aut. Lorem ipsum dolor
-            sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque.
-        </p>
-        <a [href]="facebookLink()">Facebook</a>
-        <a [href]="googleLink()">Google</a>
-        <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email">
-                <div *ngIf="email.dirty && !email.valid && email.touched">
-                    <p *ngIf="email.errors.required">Email is required.</p>
-                    <p *ngIf="email.errors.invalidEmail">The email address is invalid.</p>
-                </div>
+<div id="register">
+    <div class="headline">
+        <div class="row">
+            <div class="column small-12">
+                <h1>Log ind</h1>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" ngControl="password" class="form-control" id="password" placeholder="Password">
-                <div *ngIf="password.dirty && !password.valid && email.touched">
-                    <p *ngIf="password.errors.required">Password is required.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column small-12 register-text">
+            <a [href]="facebookLink()">Facebook</a>
+            <a [href]="googleLink()">Google</a>
+            <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email">
+                    <div *ngIf="email.dirty && !email.valid && email.touched">
+                        <p *ngIf="email.errors.required">Email is required.</p>
+                        <p *ngIf="email.errors.invalidEmail">The email address is invalid.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="passwordConfirm">Password Confirm</label>
-                <input type="password" ngControl="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password confirm">
-                <div *ngIf="passwordConfirm.dirty && !passwordConfirm.valid && passwordConfirm.touched">
-                    <p *ngIf="passwordConfirm.errors.notEquivalent">Passwords doens't match.</p>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" ngControl="password" class="form-control" id="password" placeholder="Password">
+                    <div *ngIf="password.dirty && !password.valid && email.touched">
+                        <p *ngIf="password.errors.required">Password is required.</p>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" [ngClass]="{'disabled': !registerForm.valid}">Submit</button>
-        </form>
+                <div class="form-group">
+                    <label for="passwordConfirm">Password Confirm</label>
+                    <input type="password" ngControl="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password confirm">
+                    <div *ngIf="passwordConfirm.dirty && !passwordConfirm.valid && passwordConfirm.touched">
+                        <p *ngIf="passwordConfirm.errors.notEquivalent">Passwords doens't match.</p>
+                    </div>
+                </div>
+                <button type="submit" [ngClass]="{'disabled': !registerForm.valid}">Submit</button>
+            </form>
+        </div>
     </div>
 </div>

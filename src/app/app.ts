@@ -32,14 +32,12 @@ import {Profile} from './components/profile/profile';
 ])
 export class App {
     
-    shouldEnlarge: boolean = false;
     shouldShowScene: boolean = false;
     
     constructor(public router: Router) {
         
         router.subscribe((url) => {
             
-            this.shouldEnlarge = url === "";
             this.shouldShowScene = url === "";
         });
     }
