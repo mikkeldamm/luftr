@@ -1,8 +1,8 @@
 #navigation {
     
-    position: absolute;
-    right: 1em;
-    top: 0.8em;
+    display: inline-block;
+    padding-top: 1em;
+    padding-bottom: 1.1em;
     
     a {
         
@@ -14,15 +14,24 @@
         padding: 0.7em 1em;
         border-radius: 2px;
         font-size: 0.95em;
-        
         padding-right: 0;
         padding-left: 0.5em;
         
         &.highlighted {
             
-            background-color: #109DA4;
-            padding: 0.7em 1em;
-            color: #FEFEFE;
+            padding: 0.5em 1em;
+            color: #AD7705;
+            border: 1px solid #D89B1B;
+            box-shadow: 1px 2px 0px 1px rgba(0,0,0,0.03);
+            border-radius: 4px;
+            position: relative;
+            transition: background-color 0.1s ease;
+            
+            &:hover {
+                
+                background-color: #F3B025;
+                color: #FFF;
+            }
         }
     }
 }

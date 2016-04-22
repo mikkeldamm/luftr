@@ -1,44 +1,19 @@
 #footer {
  
-    background-color: #283845;
-    padding: 2em 0;
+    height: 190px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
     
-    .footer-logo-container {
-        
-        text-align: center;
-    }
-    
-    .footer-logo {
-        
-        display: inline-block;
-        height: 35px;
-        margin-top: 34px;
-        text-align: center;
-        
-        svg {
-            
-            height: 100%;
-            
-            path,
-            polygon {
-                
-                fill: #fff;
-                
-                &[stroke] {
-                    
-                    stroke: #B2B9BC;
-                    fill: none;
-                }
-            }
-        }
-    }
- 
     ul {
         
         list-style: none;
         margin: 0;
         padding: 0;
         font-size: 13px;
+        text-align: center;
         
         li {
             
@@ -46,17 +21,24 @@
             
             h4 {
                 
-                margin: 0 0 1em 0;
+                margin: 0 1em 1em 1em;
                 font-size: 14px;
                 text-transform: uppercase;
-                color: #D8DCDD;
-                margin-bottom: 1.2em;
+                color: #2A90A9;
+                margin-bottom: 1em;
+                border-bottom: 1px solid #F1F1F1;
+                padding-bottom: 0.8em;
             }
             
             a {
                 
                 text-decoration: none;
-                color: #98A0A6;
+                color: #797979;
+                
+                &:hover {
+                    
+                    text-decoration: underline;
+                }
             }
         }
     }
