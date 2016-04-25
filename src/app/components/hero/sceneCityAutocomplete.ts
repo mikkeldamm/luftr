@@ -28,7 +28,7 @@ export class SceneCityAutocomplete {
     enableSearch() {
         
         this.cities = this.termCity.valueChanges
-            .debounceTime(300)
+            .debounceTime(150)
             .distinctUntilChanged()
             .switchMap((term: string) => this.cityAutocompleteService.search(term));
             
