@@ -2,7 +2,7 @@ import {Component, Injectable, ElementRef} from 'angular2/core';
 import {Control} from 'angular2/common';
 import {Observable} from 'rxjs/Observable';
 
-import {SceneCityAutocompleteService} from './sceneCityAutocompleteService';
+import {SceneCityAutocompleteService, SceneCity} from './sceneCityAutocompleteService';
 
 @Component({
     selector: 'scene-city-autocomplete',
@@ -16,17 +16,22 @@ import {SceneCityAutocompleteService} from './sceneCityAutocompleteService';
 
 export class SceneCityAutocomplete {
 
-    cities: Observable<Array<string>>;
+    cities: Observable<Array<SceneCity>>;
     showCities: boolean = false;
+    isCitySelected: boolean = false;
     termCity = new Control();
 
     constructor(private elementRef: ElementRef, private cityAutocompleteService: SceneCityAutocompleteService) {
 
+    }
+
+    enableSearch() {
+        
         this.cities = this.termCity.valueChanges
             .debounceTime(300)
             .distinctUntilChanged()
             .switchMap((term: string) => this.cityAutocompleteService.search(term));
-
+            
         this.cities.subscribe(items => {
             this.showCities = items.length > 0;
         });
@@ -34,15 +39,23 @@ export class SceneCityAutocomplete {
 
     handleEvent(globalEvent) {
         
-        if (this.eventTriggeredInsideHost(globalEvent)) {
+        if (this.eventTriggeredInsideHost(globalEvent) && this.isCitySelected === false) {
             if (!this.showCities) this.showCities = true;
             return;
         }
 
+        this.isCitySelected = false;
         this.showCities = false;
     }
+    
+    select(city: SceneCity) {
+        
+        this.isCitySelected = true;
+        this.cities = Observable.of([]);
+        this.termCity.updateValue(city.text, {onlySelf: true, emitEvent: false, emitModelToViewChange: true});
+    }
 
-    eventTriggeredInsideHost(event) {
+    private eventTriggeredInsideHost(event) {
         var current = event.target;
         var host = this.elementRef.nativeElement;
         
