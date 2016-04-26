@@ -1,14 +1,15 @@
 #logo {
  	   
     position: relative;
-    top: 18px;
+    margin-top: 18px;
     display: block;
+    transition: margin-top 0.2s ease;
       
     a {
         
         height: 38px;
-        line-height: 38px;
         display: block;
+        transition: height 0.2s ease;
     }
        
     svg {

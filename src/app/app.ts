@@ -1,4 +1,4 @@
-import {Component, Directive, ElementRef, Renderer, ViewEncapsulation} from 'angular2/core';
+import {Component, Directive, ElementRef, Renderer, ViewEncapsulation, HostListener} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {Hero} from './components/hero/hero';
@@ -33,6 +33,7 @@ import {Profile} from './components/profile/profile';
 export class App {
     
     shouldShowScene: boolean = false;
+    isScrolledDown: boolean = false;
     
     constructor(public router: Router) {
         
@@ -40,5 +41,15 @@ export class App {
             
             this.shouldShowScene = url === "";
         });
+    }
+    
+    @HostListener('window:scroll', ['$event']) 
+    handleScrollEvent(e) {
+        
+        if (window.pageYOffset > 70) {
+            this.isScrolledDown = true;
+        } else {
+            this.isScrolledDown = false;
+        }
     }
 }

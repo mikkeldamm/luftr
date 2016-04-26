@@ -3,6 +3,7 @@
     display: inline-block;
     padding-top: 1em;
     padding-bottom: 1.1em;
+    transition: padding-top 0.2s ease, padding-bottom 0.2s ease;
     
     a {
         
@@ -16,6 +17,7 @@
         font-size: 0.95em;
         padding-right: 0;
         padding-left: 0.5em;
+        transition: font-size 0.2s ease;
         
         &.highlighted {
             
