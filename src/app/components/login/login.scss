@@ -1,9 +1,140 @@
 #login {
     
-    padding: 2.5rem 0 1.8rem 0; 
+    .button {
+        
+        position: relative;
+        display: block;
+        white-space: normal;
+        width: 100%;
     
-    .login-text {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+        
+        font-size: 16px;
+        font-weight: normal;
+    
+        margin-top: 0;
+        margin-bottom: 0;
+        
+        border-radius: 2px;
+        border: 1px solid #c4c4c4;;
         
         text-align: center;
+        text-decoration: none;
+        line-height: 1.43;
+        
+        cursor: pointer;
+        
+        background: #FFF;
+        color: #565a5c;
+        
+        &.facebook {
+            
+            border-color: #3B5998;
+            border-bottom-color: #263a63;
+            background-color: #3B5998;
+            color: #fff;
+        }
+        
+        &.action {
+            
+            border-color: #33A6C1;
+            background-color: #44BBD8;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        &+ .button {
+            
+            margin-top: 8px;
+            margin-left: 0;
+        }
+    }
+    
+    .separator {
+        
+        background: none;
+        position: relative;
+        text-align: center;
+        margin-bottom: 0.2em;
+        
+        &:before {
+            
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            border-top: 1px solid #dce0e0;
+            top: 1px;
+            bottom: 0;
+            margin: auto;
+            height: 1px;
+            z-index: -1;
+        }
+        
+        span {
+            
+            background-color: #fff;
+            display: inline-block;
+            padding: 8px;
+            font-size: 14px;
+        }
+    }
+    
+    hr {
+        
+        margin-top: 15px;
+        margin-bottom: 15px;
+        border: 0;
+        border-top: 1px solid #dce0e0;
+    }
+    
+    .form-container {
+        
+        .form-group {
+            
+            margin-bottom: 0.5em;
+            
+            input {
+                
+                display: block;
+                border: 1px solid #c4c4c4;
+                border-radius: 2px;
+                background-color: #fff;
+                color: #565a5c;
+                padding: 10px 35px 10px 10px;
+                width: 100%;
+                height: 64px;
+                font-size: 16px;
+            }
+        }
+    }
+    
+    .signup {
+        
+        span {
+            
+            padding-top: 0.5em;
+            display: block;
+        }
+        
+        a {
+        
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 2px;
+            font-size: 0.95em;
+            padding: 0.5em 1em;
+            color: #AD7705;
+            border: 1px solid #D89B1B;
+            box-shadow: 1px 2px 0px 1px rgba(0,0,0,0.03);
+            position: relative;
+            
+            &:hover {
+                
+                background-color: #F3B025;
+                color: #FFF;
+            }
+        }
     }
 }

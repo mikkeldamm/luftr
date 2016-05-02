@@ -15,3 +15,9 @@
     <router-outlet></router-outlet>
 </main>
 <footer id="footer"></footer>
+<div id="modal" [ngClass]="{'active': isModalActive}">
+    <div class="overlay" (click)="closeModal()"></div>
+    <div class="content">
+        <div #modal></div>
+    </div>
+</div>

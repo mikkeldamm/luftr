@@ -92,6 +92,51 @@ body {
     text-align: right;
 }
 
+#modal {
+    
+    position: fixed;
+    z-index: 600;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+    &.active {
+        
+        display: flex;
+    }
+    
+    .overlay {
+        
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.75);
+        z-index: 500;
+    }
+
+    .content {
+        
+        position: relative;
+        z-index: 600;
+        overflow: hidden;
+        border-radius: 2px;
+        background-color: #fff;
+        left: 0;
+        right: 0;
+        width: 450px;
+        top: 0;
+        margin: auto;
+        padding: 2em;
+    }
+
+}
+
 @import './app/components/navigation/navigation';
 @import './app/components/logo/logo';
 @import './app/components/footer/footer';
