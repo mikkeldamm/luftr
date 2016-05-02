@@ -17,6 +17,7 @@ import {Footer} from './components/footer/footer';
 
 import {Home} from './components/home/home';
 import {Login} from './components/login/login';
+import {LoginSocial} from './components/login/loginSocial';
 import {RegisterUser} from './components/register/registerUser';
 import {Profile} from './components/profile/profile';
 
@@ -35,7 +36,7 @@ import {Profile} from './components/profile/profile';
 @RouteConfig([
     { path: '/', component: Home, name: 'Home', useAsDefault: true },
     { path: '/login', component: Home, name: 'Login' },
-    { path: '/login/oauth', component: Login, name: 'LoginAuth' },
+    { path: '/login/oauth', component: LoginSocial, name: 'LoginAuth' },
     { path: '/register', component: Home, name: 'RegisterUser' },
     { path: '/profile/...', component: Profile, name: 'Profile' }
 ])
