@@ -16,7 +16,6 @@ export class RegisterUser {
 
     email: Control;
     password: Control;
-    passwordConfirm: Control;
     registerForm: ControlGroup;
 
     constructor(
@@ -27,14 +26,10 @@ export class RegisterUser {
 
         this.email = new Control("", Validators.compose([Validators.required, EmailValidator.invalidEmail]));
         this.password = new Control("", Validators.required);
-        this.passwordConfirm = new Control("", Validators.required);
-
+        
         this.registerForm = this._formBuilder.group({
             email: this.email,
-            password: this.password,
-            passwordConfirm: this.passwordConfirm
-        }, { 
-            validator: PasswordValidator.compare('password', 'passwordConfirm') 
+            password: this.password
         });
     }
 

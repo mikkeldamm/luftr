@@ -79,6 +79,7 @@ export class App {
         }
     }
     
+    // TODO: Find better way to handle load of component into modal
     private loadLoginComponent() {
         
         var componentPromise = this._dynamicComponentLoader.loadIntoLocation(Login, this._elementRef, 'modal');

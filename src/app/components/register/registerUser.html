@@ -1,46 +1,29 @@
 <div id="register">
-    <div class="headline">
-        <div class="row">
-            <div class="column small-12">
-                <h1>Log ind</h1>
-            </div>
-        </div>
+    <a [href]="facebookLink()" class="button facebook">
+        <span>Forsæt med Facebook</span>
+    </a>
+    <a [href]="googleLink()" class="button google">
+        <span>Forsæt med Google</span>
+    </a>
+    <div class="separator">
+        <span>eller</span>
     </div>
-    <div class="row">
-        <div class="column small-12 medium-7">
-            <div class="content-container">
-                <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email">
-                        <div *ngIf="email.dirty && !email.valid && email.touched">
-                            <p *ngIf="email.errors.required">Email is required.</p>
-                            <p *ngIf="email.errors.invalidEmail">The email address is invalid.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" ngControl="password" class="form-control" id="password" placeholder="Password">
-                        <div *ngIf="password.dirty && !password.valid && email.touched">
-                            <p *ngIf="password.errors.required">Password is required.</p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordConfirm">Password Confirm</label>
-                        <input type="password" ngControl="passwordConfirm" class="form-control" id="passwordConfirm" placeholder="Password confirm">
-                        <div *ngIf="passwordConfirm.dirty && !passwordConfirm.valid && passwordConfirm.touched">
-                            <p *ngIf="passwordConfirm.errors.notEquivalent">Passwords doens't match.</p>
-                        </div>
-                    </div>
-                    <button type="submit" [ngClass]="{'disabled': !registerForm.valid}">Submit</button>
-                </form>
-            </div>
+    <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)" autocomplete="off">
+        <div class="form-group">
+            <input type="text" ngControl="email" class="form-control" id="email" placeholder="Din emailadresse">
         </div>
-        <div class="column small-12 medium-5">
-            <div class="content-container">
-                <a [href]="facebookLink()">Facebook</a>
-                <a [href]="googleLink()">Google</a>
-            </div>
+        <div class="form-group">
+            <input type="password" ngControl="password" class="form-control" id="password" placeholder="Din adgangskode">
+        </div>
+        <button type="submit" class="button action" [ngClass]="{'disabled': !registerForm.valid}">Tilmeld dig</button>
+    </form>
+    <hr />
+    <div class="row collapse signup">
+        <div class="column small-6">
+            <span>Allerede medlem?</span>
+        </div>
+        <div class="column small-6" style="text-align: right;">
+            <a [routerLink]="['Login']">Log ind</a>
         </div>
     </div>
 </div>
