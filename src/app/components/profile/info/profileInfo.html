@@ -1,22 +1,36 @@
-<headline>Profile</headline>
-<div id="profile-info" class="row">
+<headline>Færdiggør din profil</headline>
+<div class="row">
     <div class="column small-12">
-        <h1>Profile Info</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque, vero minima aspernatur ducimus
-            veniam porro natus cupiditate reiciendis sequi possimus modi magnam maxime quos, dolore aut. Lorem ipsum dolor
-            sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque.
-        </p>
-        <form class="form-container" role="form" [ngFormModel]="profileForm" (submit)="save($event)">
-            <div class="form-group">
-                <label for="name">Navn</label>
-                <input type="text" ngControl="name" class="form-control" id="name" placeholder="Navn">
+        <div class="profile-container">
+            <div class="row">
+                <div class="column small-12 large-7">
+                    <h3>Område information</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque, vero minima aspernatur ducimus
+                        veniam porro natus cupiditate reiciendis sequi possimus modi magnam maxime quos, dolore aut. Lorem ipsum dolor
+                        sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque.
+                    </p>
+                     <form class="form-container" role="form" [ngFormModel]="profileForm" (submit)="save($event)">
+                        <div class="form-group">
+                            <label for="name">Navn</label>
+                            <input type="text" ngControl="name" class="form-control" id="name" placeholder="Navn">
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePicture">Profil billede</label>
+                            <input type="file" ngControl="profilePicture" class="form-control" id="profilePicture">
+                        </div>
+                        <button type="submit" [ngClass]="{'disabled': !profileForm.valid}">Gem</button>
+                    </form>
+                </div>
+                <div class="column small-12 large-5">
+                    <h3>Område information</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque, vero minima aspernatur ducimus
+                        veniam porro natus cupiditate reiciendis sequi possimus modi magnam maxime quos, dolore aut. Lorem ipsum dolor
+                        sit amet, consectetur adipisicing elit. Ipsa accusamus nulla nihil itaque.
+                    </p>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="profilePicture">Profil billede</label>
-                <input type="file" ngControl="profilePicture" class="form-control" id="profilePicture">
-            </div>
-            <button type="submit" [ngClass]="{'disabled': !profileForm.valid}">Gem</button>
-        </form>
+        </div>
     </div>
 </div>
