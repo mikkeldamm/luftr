@@ -16,8 +16,7 @@ export class LoginSocial implements OnActivate {
     
     routerOnActivate(next: ComponentInstruction, prev: ComponentInstruction) {
         
-        return new Promise<boolean>(
-            (resolve, reject) => {
+        return new Promise<boolean>((resolve, reject) => {
                 
                 let authHash = window.location.hash;
                 if (authHash) {

@@ -10,8 +10,6 @@ import {SceneCityAutocomplete} from './sceneCityAutocomplete';
 })
 export class Hero {
     
-    @Input() shouldShow: boolean;
-    
     constructor() {
     }
 }

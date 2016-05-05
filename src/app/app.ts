@@ -1,6 +1,7 @@
 import {
         Injector, 
         Component, 
+        OnInit,
         ElementRef, 
         Renderer, 
         ViewEncapsulation, 
@@ -8,8 +9,9 @@ import {
         DynamicComponentLoader,
         ComponentRef
 } from 'angular2/core';
-import {RouteConfig, Router, AuxRoute, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES} from 'angular2/router';
 
+import {StickDirective} from './directives/stick.directive';
 import {Hero} from './components/hero/hero';
 import {Logo} from './components/logo/logo';
 import {Navigation} from './components/navigation/navigation';
@@ -26,9 +28,9 @@ import {Profile} from './components/profile/profile';
     encapsulation: ViewEncapsulation.None,
     directives: [
         ...ROUTER_DIRECTIVES,
+        StickDirective,
         Logo,
         Navigation,
-        Hero,
         Footer
     ], 
     template: require('./app.html')
@@ -40,12 +42,10 @@ import {Profile} from './components/profile/profile';
     { path: '/register', component: Home, name: 'RegisterUser' },
     { path: '/profile/...', component: Profile, name: 'Profile' }
 ])
-export class App {
-    
-    shouldShowScene: boolean = true;
-    isScrolledDown: boolean = false;
+export class App implements OnInit {
     
     isModalActive: boolean = false;
+    
     componentReference: ComponentRef;
     
     constructor(
@@ -54,10 +54,12 @@ export class App {
         private _elementRef: ElementRef,
         private _injector: Injector
         ) {
-        
-        _router.subscribe((url) => {
             
-            //this.shouldShowScene = url === "";
+    }
+    
+    ngOnInit() {
+        
+        this._router.subscribe((url) => {
             
             if (url === "login") {
                 
@@ -101,16 +103,5 @@ export class App {
             this.isModalActive = true;
             this.componentReference = comRef;
         });
-    }
-    
-    // TODO: make this a directive instead
-    @HostListener('window:scroll', ['$event']) 
-    handleScrollEvent(e) {
-        
-        if (window.pageYOffset > 70) {
-            this.isScrolledDown = true;
-        } else {
-            this.isScrolledDown = false;
-        }
     }
 }

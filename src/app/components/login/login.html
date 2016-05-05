@@ -8,7 +8,7 @@
     <div class="separator">
         <span>eller</span>
     </div>
-    <form class="form-container" role="form" [ngFormModel]="loginForm" (submit)="login($event)" autocomplete="off">
+    <form class="form-container" role="form" [ngFormModel]="loginForm" (submit)="login($event)" autocomplete="false">
         <div class="form-group">
             <input type="text" ngControl="email" class="form-control" id="email" placeholder="E-mail">
         </div>

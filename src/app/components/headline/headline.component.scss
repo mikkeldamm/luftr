@@ -1,0 +1,48 @@
+:host {
+    
+    display: block;
+    position: relative;
+    width: 100%;
+    background-color: #A8DBDD;
+    margin-bottom: 1.6em;
+    background-image: url('/assets/images/hero2_web.jpg');
+    background-size: cover;
+    background-position: center -196px;
+    
+    &:before {
+            
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(62, 154, 177, 0.9);
+        z-index: 0;
+    }
+    
+    h1 {
+        
+        margin: 0;
+        display: inline-block;
+        padding-bottom: 1em;
+        line-height: 1em;
+        color: #FFF;
+        margin-top: 1.5em;
+        font-size: 1.5em;
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+        
+        &:after {
+            
+            content: "";
+            min-width: 2em;
+            max-width: 2em;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}

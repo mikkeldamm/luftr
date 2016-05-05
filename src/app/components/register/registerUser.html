@@ -8,12 +8,14 @@
     <div class="separator">
         <span>eller</span>
     </div>
-    <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)" autocomplete="off">
+    <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)" autocomplete="false">
+        <input type="text" name="email" style="display:none;" />
+        <input type="password" name="password" style="display:none;" />
         <div class="form-group">
-            <input type="text" ngControl="email" class="form-control" id="email" placeholder="Din emailadresse">
+            <input type="text" ngControl="email" class="form-control" id="email" autocomplete="new-user-email" placeholder="Din emailadresse">
         </div>
         <div class="form-group">
-            <input type="password" ngControl="password" class="form-control" id="password" placeholder="Din adgangskode">
+            <input type="password" ngControl="password" class="form-control" id="password" autocomplete="new-user-password" placeholder="Din adgangskode">
         </div>
         <button type="submit" class="button action" [ngClass]="{'disabled': !registerForm.valid}">Tilmeld dig</button>
     </form>

@@ -17,6 +17,10 @@ export class ProfileInfo {
         private _formBuilder: FormBuilder
     ) {
         
+    }
+    
+    ngOnInit() {
+        
         this.name = new Control("", Validators.required);
         this.profilePicture = new Control("", Validators.required);
 

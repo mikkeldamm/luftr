@@ -1,4 +1,4 @@
-<header id="header" [ngClass]="{'down':isScrolledDown}">
+<header id="header" stick [stickMin]="76">
     <div class="row">
         <div class="columns small-4">
             <logo id="logo"></logo>
@@ -8,9 +8,6 @@
         </div>
     </div>
 </header>
-<section id="top">
-    <hero [shouldShow]="shouldShowScene"></hero>
-</section>
 <main id="main">
     <router-outlet></router-outlet>
 </main>
