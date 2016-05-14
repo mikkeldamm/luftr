@@ -1,6 +1,6 @@
 <div class="scene-field-city">              
     <input type="text" (click)="enableSearch()" placeholder="Indtast postnr. eller by" [ngFormControl]="termCity" />
     <ul [ngClass]="{hide:!showCities}">
-        <li *ngFor="#city of cities | async" id="{{city.zip}}" (click)="select(city)">{{city.text}}</li>
+        <li *ngFor="let city of cities | async" id="{{city.zip}}" (click)="select(city)">{{city.text}}</li>
     </ul>
 </div>

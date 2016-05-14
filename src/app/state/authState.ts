@@ -1,4 +1,4 @@
-import {URLSearchParams} from 'angular2/http';
+import {URLSearchParams} from '@angular/http';
 
 export class AuthState {
     

@@ -1,11 +1,11 @@
-import {Injectable} from 'angular2/core';
-import {URLSearchParams, Jsonp} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {URLSearchParams, Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class SceneCityAutocompleteService {
     
-    constructor(private jsonp: Jsonp) {
+    constructor(private http: Http) {
         
     }
     
@@ -18,8 +18,8 @@ export class SceneCityAutocompleteService {
         
         if (term) {
             
-            return this.jsonp
-                        .get('https://dawa.aws.dk/postnumre/autocomplete?callback=JSONP_CALLBACK', { search })
+            return this.http
+                        .get('https://dawa.aws.dk/postnumre/autocomplete', { search })
                         .map((request) => request.json())
                         .map(items => this.mapDawaCityObjectToCityObject(items));
         }

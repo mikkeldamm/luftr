@@ -8,8 +8,8 @@ import {
         HostListener, 
         DynamicComponentLoader,
         ComponentRef
-} from 'angular2/core';
-import {RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES} from 'angular2/router';
+} from '@angular/core';
+import {RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
 import {StickDirective} from './directives/stick.directive';
 import {Hero} from './components/hero/hero';
@@ -46,7 +46,7 @@ export class App implements OnInit {
     
     isModalActive: boolean = false;
     
-    componentReference: ComponentRef;
+    componentReference: ComponentRef<App>;
     
     constructor(
         private _router: Router,
@@ -77,7 +77,7 @@ export class App implements OnInit {
     closeModal() {
         
         if (this.componentReference) {
-            this.componentReference.dispose();
+            this.componentReference.destroy();
             this.isModalActive = false;
         }
     }
@@ -85,7 +85,7 @@ export class App implements OnInit {
     // TODO: Find better way to handle load of component into modal
     private loadLoginComponent() {
         
-        var componentPromise = this._dynamicComponentLoader.loadIntoLocation(Login, this._elementRef, 'modal');
+        var componentPromise = this._dynamicComponentLoader.loadAsRoot(Login, '#modal-content', this._injector);
         
         componentPromise.then((comRef) => {
             
@@ -96,7 +96,7 @@ export class App implements OnInit {
     
     private loadRegisterComponent() {
         
-        var componentPromise = this._dynamicComponentLoader.loadIntoLocation(RegisterUser, this._elementRef, 'modal');
+        var componentPromise = this._dynamicComponentLoader.loadAsRoot(RegisterUser, '#modal-content', this._injector);
         
         componentPromise.then((comRef) => {
             

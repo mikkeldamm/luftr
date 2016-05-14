@@ -1,5 +1,4 @@
-import {unimplemented} from 'angular2/src/facade/exceptions';
-import {OpaqueToken, Provider} from 'angular2/core';
+import {OpaqueToken, Provider} from '@angular/core';
 
 function _window(): any {
     return window;
@@ -9,7 +8,7 @@ export const WINDOW: OpaqueToken = new OpaqueToken('WindowToken');
 
 export abstract class WindowRef {
     get nativeWindow(): any {
-        return unimplemented();
+        return null; // find a way to return "unimplemented"
     }
 }
 

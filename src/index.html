@@ -3,7 +3,7 @@
 <head>
     <title><%= webpackConfig.metadata.title %></title>
     <meta charset="UTF-8">
-    <base href="/">
+    <base href="<%= webpackConfig.metadata.baseUrl %>">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Luftr hjælper dig med at finde en hundelufter i dit område.">
@@ -30,7 +30,7 @@
     <app></app>
 
     <% if (webpackConfig.metadata.ENV === 'development') { %>
-    <script src="http://<%= webpackConfig.metadata.host %>:<%= webpackConfig.metadata.port %>/webpack-dev-server.js"></script>
+    <script src="/webpack-dev-server.js"></script>
     <% } %>
     
     <% if (webpackConfig.metadata.ENV !== 'development') { %>

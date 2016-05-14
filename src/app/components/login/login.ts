@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
-import {Http, Headers, URLSearchParams} from 'angular2/http';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from '@angular/common';
+import {Http, Headers, URLSearchParams} from '@angular/http';
 
 import {EmailValidator, PasswordValidator} from '../../validation/formValidators';
 import {AuthHttp, JwtHelper} from 'angular2-jwt';

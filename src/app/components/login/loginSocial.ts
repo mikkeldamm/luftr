@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {OnActivate, ComponentInstruction} from 'angular2/router';
-import {URLSearchParams} from 'angular2/http';
+import {Component} from '@angular/core';
+import {OnActivate, ComponentInstruction} from '@angular/router-deprecated';
+import {URLSearchParams} from '@angular/http';
 
 import {AuthState} from '../../state/authState';
 

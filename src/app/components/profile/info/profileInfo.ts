@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from '@angular/common';
 
 @Component({
     selector: 'profileInfo',

@@ -4,21 +4,26 @@
 // run `typings install x` where `x` is your module
 
 // Angular 2
-import 'angular2/platform/browser';
-import 'angular2/core';
-import 'angular2/http';
-import 'angular2/router';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/core';
+import '@angular/common';
+import '@angular/http';
+import '@angular/router-deprecated';
 
 // RxJS
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+/*
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/fromArray';
 import 'rxjs/add/observable/fromEvent';
+*/
 
 if ('production' === ENV) {
   // Production

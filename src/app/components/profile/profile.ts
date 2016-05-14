@@ -1,5 +1,5 @@
-import {Component, OnInit, Directive, ElementRef, Renderer, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, Router, RouterOutlet} from 'angular2/router';
+import {Component, OnInit, Directive, ElementRef, Renderer, ViewEncapsulation} from '@angular/core';
+import {RouteConfig, Router, RouterOutlet} from '@angular/router-deprecated';
 
 import {ProfileInfo} from './info/profileInfo';
 import {ProfileWalker} from './walker/profileWalker';

@@ -1,6 +1,6 @@
-import {Component, Injectable, ElementRef} from 'angular2/core';
-import {Control} from 'angular2/common';
-import {Observable} from 'rxjs/Observable';
+import {Component, Injectable, ElementRef} from '@angular/core';
+import {Control} from '@angular/common';
+import {Observable} from 'rxjs';
 
 import {SceneCityAutocompleteService, SceneCity} from './sceneCityAutocompleteService';
 

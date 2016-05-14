@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, Output, EventEmitter, HostListener} from 'angular2/core';
+import {Directive, ElementRef, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import {WindowRef} from '../../platform/browser/window';
 
 @Directive({

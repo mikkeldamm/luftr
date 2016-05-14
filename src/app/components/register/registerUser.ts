@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from 'angular2/common';
-import {ROUTER_DIRECTIVES, Router, OnActivate, ComponentInstruction} from 'angular2/router';
-import {Http, Headers, URLSearchParams} from 'angular2/http';
+import {Component} from '@angular/core';
+import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from '@angular/common';
+import {ROUTER_DIRECTIVES, Router, OnActivate, ComponentInstruction} from '@angular/router-deprecated';
+import {Http, Headers, URLSearchParams} from '@angular/http';
 
 import {EmailValidator, PasswordValidator} from '../../validation/formValidators';
 import {AuthState, SocialAuth} from '../../state/authState';
