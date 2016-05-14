@@ -1,11 +1,162 @@
+$column-gutter: 2rem;
+
 .profile-container {
     
     background-color: #fff;
-    padding: 1.8em;
+    padding: 3em;
     border-radius: 2px;
+    
+    .column {
+        padding-left: $column-gutter;
+        padding-right: $column-gutter;
+    }
+
+    .row {
+        margin-left: -$column-gutter;
+        margin-right: -$column-gutter;
+    }
     
     h3 {
         
         margin: 0;
     }
+    
+    .group {
+        
+        margin-top: 4.5em;
+        position: relative;
+        
+        &:first-child {
+            
+            margin-top: 0;
+            
+        }
+        
+        &:after {
+            
+            content: ". . .";
+            position: absolute;
+            bottom: -2.2em;
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #A4CCD6;
+        }
+
+        h3 {
+            color: #4C4F50;
+        }        
+        
+        p {
+            
+            color: #868686;
+            margin-bottom: 2em;
+            margin-top: 0.5em;
+        }
+        
+        .form-group {
+            
+            margin-bottom: 0.8em;
+    
+            &:last-child {
+                
+                margin-bottom: 0;
+            }
+        
+            label {
+                display: block;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 0.75em;
+                margin-bottom: 0.5em;
+            }
+            
+            input, textarea, select {
+                
+                border: 1px solid #D2D2D2;
+                background-color: #FDFDFD;
+                width: 100%;
+                border-radius: 3px;
+                padding: 0.5em 0.7em;
+                //box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.03);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                
+                &[disabled] {
+                    background-color: #ECECEC;
+                }
+                
+                &::-webkit-input-placeholder,
+                &::-moz-placeholder,
+                &:-ms-input-placeholder {
+                    
+                    color: #D2D2D2;
+                    font-size: 0.8em;
+                }
+            }
+            
+            select {
+             
+                padding: 0.4em 0.7em; 
+            }
+        }
+        
+        .birthdate {
+            
+            .day {
+                padding-right: 0;
+            }
+            
+            .month {
+                padding-left: 1em;
+                padding-right: 0;
+            }
+            
+            .year {
+                padding-left: 1em;
+            }
+        }
+    }
+    
+    button {
+        
+        margin-top: 4.5em;
+        border: 1px solid #D89B1B;
+        background-color: #E4AB32;
+        width: 100%;
+        border-radius: 3px;
+        padding: 0.9em 0.7em;
+        color: #FFF;
+        text-transform: uppercase;
+        font-weight: bold;
+        box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.help {
+    
+    p {
+        font-size: 0.9em;
+    }
+
+    .phone {
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 1em;
+    }
+
+    .email {
+        display: inline-block;
+        margin-left: 1em;
+        color: #109DA4;
+        text-decoration: none;
+    }
+}
+
+.profile {
+    margin-top: 3em;
 }

@@ -3,16 +3,16 @@
     <div class="column small-12">
         <div class="profile-container">
             <div class="row">
-                <div class="column small-12 large-7">
+                <div class="column small-12 large-8">
                      <form class="form-container" role="form" [ngFormModel]="profileForm" (submit)="save($event)">
                         <div class="group">
                             <h3>Område information</h3>
                             <p>
-                                Vi gemmer hverken din adresse eller position. Vi har blot brug for at vide hvilke områder (postnr.) som du er interesseret at lufte hunde i.
+                                Fortæl os hvilke områder du er interesseret at lufte hunde i.
                             </p>
                             <div class="form-group">
-                                <label for="zip">Område</label>
-                                <input type="text" ngControl="zip" class="form-control" id="zip" placeholder="Område">
+                                <label for="zip">Postnumre/byer</label>
+                                <input type="text" ngControl="zip" class="form-control" id="zip">
                             </div>
                         </div>
                         <div class="group">
@@ -22,7 +22,7 @@
                             </p>
                             <div class="form-group">
                                 <label for="description">Beskrivelse</label>
-                                <textarea ngControl="description" class="form-control" id="description" placeholder="Beskrivelse"></textarea>
+                                <textarea ngControl="description" class="form-control" id="description" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="picture">Profil billede</label>
@@ -36,41 +36,47 @@
                             </p>
                             <div class="form-group">
                                 <label for="name">Navn</label>
-                                <input type="text" ngControl="name" class="form-control" id="name" placeholder="Navn">
+                                <input type="text" ngControl="name" class="form-control" id="name">
                             </div>
                             <div class="form-group">
                                 <label>Fødselsdato</label>
-                                <div class="row">
-                                    <div class="column small-16 large-3">
-                                        <input type="text" ngControl="birthdate-day" class="form-control">
+                                <div class="row birthdate">
+                                    <div class="column small-16 large-3 day">
+                                        <select ngControl="birthdate-day" class="form-control">
+                                            <option>1</option>
+                                        </select>
                                     </div>
-                                    <div class="column small-16 large-3">
-                                        <input type="text" ngControl="birthdate-month" class="form-control">
+                                    <div class="column small-16 large-3 month">
+                                        <select ngControl="birthdate-month" class="form-control">
+                                            <option>Januar</option>
+                                        </select>
                                     </div>
-                                    <div class="column small-16 large-6">
-                                        <input type="text" ngControl="birthdate-year" class="form-control">
+                                    <div class="column small-16 large-6 year">
+                                        <select ngControl="birthdate-year" class="form-control">
+                                            <option>1990</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" ngControl="email" class="form-control" id="email" placeholder="Email" disabled="disabled">
+                                <input type="text" ngControl="email" class="form-control" id="email" disabled="disabled">
                             </div>
                             <div class="form-group">
                                 <label for="phone">Telefon</label>
-                                <input type="text" ngControl="phone" class="form-control" id="phone" placeholder="Telefon">
+                                <input type="text" ngControl="phone" class="form-control" id="phone">
                             </div>
                         </div>
                         <button type="submit" [ngClass]="{'disabled': !profileForm.valid}">Gem</button>
                     </form>
                 </div>
-                <div class="column small-12 large-5">
+                <div class="column small-12 large-4">
                     <div class="help">
                         <h3>Brug for hjælp?</h3>
                         <p>
                             Vi vil være mere end glade for at hjælpe dig med at udfylde denne formular. Kontakt os venligst på:
                             <span class="phone">+45 21 74 67 66</span>
-                            <span class="email">support@luftr.dk</span>
+                            <a href="mailto:support@luftr.dk" class="email">support@luftr.dk</a>
                         </p>
                     </div>
                     <div class="profile">
