@@ -14,16 +14,12 @@ import '@angular/router-deprecated';
 // RxJS
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-
-
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
-/*
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/fromArray';
-import 'rxjs/add/observable/fromEvent';
-*/
+
+import 'firebase/lib/firebase-web';
+import 'angularfire2';
 
 if ('production' === ENV) {
   // Production

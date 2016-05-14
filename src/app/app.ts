@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import {RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
 import {StickDirective} from './directives/stick.directive';
 import {Hero} from './components/hero/hero';
 import {Logo} from './components/logo/logo';
@@ -52,7 +54,8 @@ export class App implements OnInit {
         private _router: Router,
         private _dynamicComponentLoader: DynamicComponentLoader,
         private _elementRef: ElementRef,
-        private _injector: Injector
+        private _injector: Injector,
+        private _af: AngularFire
         ) {
             
     }
@@ -71,6 +74,10 @@ export class App implements OnInit {
                 this.closeModal();
                 this.loadRegisterComponent();
             }
+        });
+        
+        this._af.list('/damm').subscribe((res) => {
+           console.log(res); 
         });
     }
     
