@@ -48,8 +48,8 @@
     "typings:install": "typings install",
     "other:install": "npm run bower:install && npm run typings:install",
     "predeploy": "npm run build:prod",
-    "deploy": "node ./node_modules/firebase-tools/bin/firebase deploy",
-    "deploy:fast": "node ./node_modules/firebase-tools/bin/firebase deploy"
+    "deploy": "firebase deploy",
+    "deploy:fast": "firebase deploy"
   },
   "license": "MIT",
   "contributors": [

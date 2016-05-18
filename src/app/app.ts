@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 
 import {StickDirective} from './directives/stick.directive';
 import {Hero} from './components/hero/hero';
@@ -76,8 +76,19 @@ export class App implements OnInit {
             }
         });
         
-        this._af.list('/damm').subscribe((res) => {
+        
+        this._af.list('/users').subscribe((res) => {
            console.log(res); 
+        });
+        
+        this._af.object('/users/123').update({
+            firstName: "glen",
+            lastName: "damm"
+        });
+        
+        this._af.object('/users/5677').update({
+            firstName: "glen",
+            lastName: "damm"
         });
     }
     

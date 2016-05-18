@@ -14,7 +14,12 @@ import { ENV_PROVIDERS } from './platform/environment';
 * our top level component that holds all of our components
 */
 import { App, APP_PROVIDERS } from './app';
-import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
+import {FIREBASE_PROVIDERS, 
+  defaultFirebase, 
+  AngularFire, 
+  AuthMethods, 
+  AuthProviders, 
+  firebaseAuthConfig} from 'angularfire2';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -29,7 +34,7 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PIPES,
     ...APP_PROVIDERS,
     ...FIREBASE_PROVIDERS,
-    defaultFirebase('https://luftr.firebaseio.com')
+    defaultFirebase('https://luftr-1236.firebaseio.com')
   ])
   .catch(err => console.error(err));
 }
