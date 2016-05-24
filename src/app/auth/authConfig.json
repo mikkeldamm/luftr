@@ -1,5 +1,4 @@
 {
     "authDomain": "https://lufer.eu.auth0.com",
-    "authClientId": "RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT",
-    "authRedirectUrl": "http://localhost:3000/login/oauth"
+    "authClientId": "RRjfqTxQZUIpy7aCRDMscCFOsVDEdbwT"
 }

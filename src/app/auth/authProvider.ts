@@ -3,14 +3,20 @@ import {Http, Headers, URLSearchParams} from '@angular/http';
 
 import {Observable} from 'rxjs/Observable';
 
+import {WindowRef} from '../../platform/browser/window';
+
 @Injectable()
 export abstract class Auth {
 
     private _authConfig: AuthConfig;
+    private _authRedirectUrl: string;
     
-    constructor(private _http: Http) {
+    constructor(
+        private _window: WindowRef,
+        private _http: Http) {
         
         this._authConfig = require('./authConfig.json');
+        this._authRedirectUrl = _window.nativeWindow.location.origin + '/login/oauth'
     }
     
     getSocialOAuthUrl(type: SocialAuth): string {
@@ -18,7 +24,7 @@ export abstract class Auth {
         let urlParams = new URLSearchParams();
         urlParams.append("response_type", "token");
         urlParams.append("client_id", this._authConfig.authClientId);
-        urlParams.append("redirect_uri", this._authConfig.authRedirectUrl);
+        urlParams.append("redirect_uri", this._authRedirectUrl);
         urlParams.append("connection", type == SocialAuth.facebook ? "facebook" : "google-oauth2");
         urlParams.append("scope", "openid");
 
