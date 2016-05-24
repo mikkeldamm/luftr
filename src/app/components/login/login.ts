@@ -1,10 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from '@angular/common';
 import {Http, Headers, URLSearchParams} from '@angular/http';
 
-import {EmailValidator, PasswordValidator} from '../../validation/formValidators';
 import {AuthHttp, JwtHelper} from 'angular2-jwt';
-import {AuthState, SocialAuth} from '../../state/authState';
+
+import {EmailValidator, PasswordValidator} from '../../validation/formValidators';
+import {Auth, AuthState, SocialAuth} from '../../auth';
 
 @Component({
     selector: 'login',
@@ -12,14 +13,18 @@ import {AuthState, SocialAuth} from '../../state/authState';
     styles: [require('./login.scss')],
     template: require('./login.html')
 })
-export class Login {
-
+export class Login implements OnInit {
+    
+    facebookLink: string;
+    googleLink: string;
+    
     email: Control;
     password: Control;
     loginForm: ControlGroup;
 
     constructor(
         private _http: Http, 
+        private _auth: Auth,
         private _authState: AuthState,
         private _formBuilder: FormBuilder) {
 
@@ -32,31 +37,31 @@ export class Login {
         });
     }
     
+    ngOnInit() {
+        
+        this.facebookLink = this._auth.getSocialOAuthUrl(SocialAuth.facebook);
+        this.googleLink = this._auth.getSocialOAuthUrl(SocialAuth.google);
+    }
+    
     login(event) {
         
         event.preventDefault();
         
         if (this.loginForm.valid) {
         
-            const contentHeaders = new Headers();
-            contentHeaders.append('Accept', 'application/json');
-            contentHeaders.append('Content-Type', 'application/json');
-            
-            let body = JSON.stringify({
-                "username": this.email.value, 
-                "password": this.password.value,
-                "client_id": this._authState.authClientId,
-                "connection":  "Username-Password-Authentication",
-                "grant_type": "password",
-                "scope": "openid",
-                "device": ""
-            });
-            
-            this._http.post(this._authState.authDomain + '/oauth/ro', body, { headers: contentHeaders })
-                .map(response => response.json())
-                .subscribe((response:any) => {
-                        
-                    this.setAuthenticatedState(response.access_token);
+            this._auth
+                .login(this.email.value, this.password.value)
+                .switchMap(res => {
+                    return this._auth.delegation(res.access_token, res.id_token)
+                })
+                .subscribe(response => {
+                    
+                    this.setAuthenticatedState(
+                        response.accessToken,
+                        response.idToken,
+                        response.jwt
+                    );
+                    
                     this.redirectAfterAuthenticated();
                 },
                 error => {
@@ -66,23 +71,13 @@ export class Login {
         }
     }
     
-    facebookLink() {
-        
-        return this._authState.getSocialOAuthUrl(SocialAuth.facebook);
-    }
-
-    googleLink() {
-        
-        return this._authState.getSocialOAuthUrl(SocialAuth.google);
-    }
-    
     redirectAfterAuthenticated() {
         
         window.location.href = "/";
     }
     
-    setAuthenticatedState(token: string) {
+    setAuthenticatedState(token: string, idToken: string, jwt: string) {
         
-        this._authState.setAuthenticated(token);
+        this._authState.setAuthenticated(token, idToken, jwt);
     }
 }

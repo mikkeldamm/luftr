@@ -4,7 +4,7 @@ import {ROUTER_DIRECTIVES, Router, OnActivate, ComponentInstruction} from '@angu
 import {Http, Headers, URLSearchParams} from '@angular/http';
 
 import {EmailValidator, PasswordValidator} from '../../validation/formValidators';
-import {AuthState, SocialAuth} from '../../state/authState';
+import {Auth, AuthState, SocialAuth} from '../../auth';
 
 @Component({
     selector: 'registerUser',
@@ -21,6 +21,7 @@ export class RegisterUser {
     constructor(
         private _http: Http,
         private _router: Router,
+        private _auth: Auth,
         private _authState: AuthState,
         private _formBuilder: FormBuilder) {
 
@@ -39,18 +40,9 @@ export class RegisterUser {
         
         if (this.registerForm.valid) {
 
-            const contentHeaders = new Headers();
-            contentHeaders.append('Content-Type', 'application/json');
-
-            let body = JSON.stringify({
-                "email": this.email.value,
-                "password": this.password.value,
-                "client_id": this._authState.authClientId,
-                "connection": "Username-Password-Authentication"
-            }); 
-
-            this._http.post(this._authState.authDomain + '/dbconnections/signup', body, { headers: contentHeaders })
-                .subscribe((response: any) => {
+            this._auth
+                .register(this.email.value, this.password.value)
+                .subscribe(response => {
 
                     this.redirectToLoginAfterRegistered();
                 },
@@ -63,12 +55,12 @@ export class RegisterUser {
 
     facebookLink() {
         
-        return this._authState.getSocialOAuthUrl(SocialAuth.facebook);
+        return this._auth.getSocialOAuthUrl(SocialAuth.facebook);
     }
 
     googleLink() {
         
-        return this._authState.getSocialOAuthUrl(SocialAuth.google);
+        return this._auth.getSocialOAuthUrl(SocialAuth.google);
     }
 
     redirectToLoginAfterRegistered() {

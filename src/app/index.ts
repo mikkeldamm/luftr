@@ -1,9 +1,8 @@
-// App
 export * from './app';
 
-import { AuthState } from './state/authState';
+import { AUTH_PROVIDERS, AUTH_STATE } from './auth';
 
-// Application wide providers
 export const APP_PROVIDERS = [
-  AuthState
+    AUTH_PROVIDERS,
+    AUTH_STATE
 ];

@@ -39,9 +39,9 @@ import {Profile} from './components/profile/profile';
 })
 @RouteConfig([
     { path: '/', component: Home, name: 'Home', useAsDefault: true },
-    { path: '/login', component: Home, name: 'Login' },
+    { path: '/login', component: Login, name: 'Login' },
     { path: '/login/oauth', component: LoginSocial, name: 'LoginAuth' },
-    { path: '/register', component: Home, name: 'RegisterUser' },
+    { path: '/register', component: RegisterUser, name: 'RegisterUser' },
     { path: '/profile/...', component: Profile, name: 'Profile' }
 ])
 export class App implements OnInit {
@@ -62,6 +62,7 @@ export class App implements OnInit {
     
     ngOnInit() {
         
+        /*
         this._router.subscribe((url) => {
             
             if (url === "login") {
@@ -75,23 +76,57 @@ export class App implements OnInit {
                 this.loadRegisterComponent();
             }
         });
-        
+        */
         
         this._af.list('/users').subscribe((res) => {
            console.log(res); 
         });
         
+        /*
+        this._af.auth.login({
+            token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2x1ZmVyLmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1NmRmNTMzZDQzZWRiNWY5NWMxY2Q4NjgiLCJhdWQiOiJSUmpmcVR4UVpVSXB5N2FDUkRNc2NDRk9zVkRFZGJ3VCIsImV4cCI6MTQ2MzcyOTIyMCwiaWF0IjoxNDYzNjkzMjIwLCJ2IjowLCJkIjp7ImZiX2lkIjoiWVhWMGFEQjhOVFprWmpVek0yUTBNMlZrWWpWbU9UVmpNV05rT0RZNCIsInVpZCI6ImF1dGgwOjU2ZGY1MzNkNDNlZGI1Zjk1YzFjZDg2OCJ9LCJhenAiOiJSUmpmcVR4UVpVSXB5N2FDUkRNc2NDRk9zVkRFZGJ3VCJ9.OOnHCobn1RwAmtjjxGw1Bco_vCzwjovoWFsm8egvzkg"
+        }, {
+            provider: AuthProviders.Custom,
+            method: AuthMethods.CustomToken
+        }).then((value) => {
+            
+            console.log(value);
+            
+            
         this._af.object('/users/123').update({
-            firstName: "glen",
+            userid: "auth0:56df533d43edb5f95c1cd868",
+            firstName: "mikkel",
             lastName: "damm"
         });
+            
+        }).catch((err) => {
+            
+            console.log(err);
+        });
+        */
         
+        /*
+        this._af.object('/users/123/contact').set({
+            phone: 21746766,
+            email: "mikkeldamm@hotmail.com"
+        });
+        
+        this._af.object('/users/123').update({
+            userid: "auth0:56df533d43edb5f95c1cd868",
+            firstName: "mikkel",
+            lastName: "damm"
+        });
+        */
+        
+        /*
         this._af.object('/users/5677').update({
             firstName: "glen",
             lastName: "damm"
         });
+        */
     }
     
+    /*
     closeModal() {
         
         if (this.componentReference) {
@@ -103,7 +138,7 @@ export class App implements OnInit {
     // TODO: Find better way to handle load of component into modal
     private loadLoginComponent() {
         
-        var componentPromise = this._dynamicComponentLoader.loadAsRoot(Login, '#modal-content', this._injector);
+        var componentPromise = this._dynamicComponentLoader.loadNextToLocation(Login, '#modal-content', this._injector);
         
         componentPromise.then((comRef) => {
             
@@ -122,4 +157,5 @@ export class App implements OnInit {
             this.componentReference = comRef;
         });
     }
+    */
 }
