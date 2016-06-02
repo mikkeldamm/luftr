@@ -1,31 +1,65 @@
-<div id="register">
-    <a [href]="facebookLink()" class="button facebook">
-        <span>Forsæt med Facebook</span>
-    </a>
-    <a [href]="googleLink()" class="button google">
-        <span>Forsæt med Google</span>
-    </a>
-    <div class="separator">
-        <span>eller</span>
-    </div>
-    <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)" autocomplete="false">
-        <input type="text" name="email" style="display:none;" />
-        <input type="password" name="password" style="display:none;" />
-        <div class="form-group">
-            <input type="text" ngControl="email" class="form-control" id="email" autocomplete="new-user-email" placeholder="Din emailadresse">
-        </div>
-        <div class="form-group">
-            <input type="password" ngControl="password" class="form-control" id="password" autocomplete="new-user-password" placeholder="Din adgangskode">
-        </div>
-        <button type="submit" class="button action" [ngClass]="{'disabled': !registerForm.valid}">Tilmeld dig</button>
-    </form>
-    <hr />
-    <div class="row collapse signup">
-        <div class="column small-6">
-            <span>Allerede medlem?</span>
-        </div>
-        <div class="column small-6" style="text-align: right;">
-            <a [routerLink]="['Login']">Log ind</a>
+<headline>Tilmeld</headline>
+<div class="row">
+    <div class="column small-12">
+        <div class="register-container">
+            <div class="row">
+                <div class="column small-12 large-8">
+                     <form class="form-container" role="form" [ngFormModel]="registerForm" (submit)="register($event)">
+                        <div class="group">
+                            <input type="text" name="email" style="display:none;" />
+                            <input type="password" name="password" style="display:none;" />
+                            
+                            <h3>Tilmeld via e-mail</h3>
+                            <p>
+                                Har du oprettet en bruger med e-mail kan du bruge nedenstående til at logge ind.
+                            </p>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="text" ngControl="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Adgangskode</label>
+                                <input type="password" ngControl="password" class="form-control" id="password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" [ngClass]="{'disabled': !registerForm.valid}">Tilmeld</button>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <h3>eller socialt medie</h3>
+                            <p>
+                                Vi kræver kun adgang til din e-mail information fra det sociale medie.
+                            </p>
+                            <div class="form-group">
+                                <a [href]="facebookLink" class="button facebook">
+                                    <span>Forsæt med Facebook</span>
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <a [href]="googleLink" class="button google">
+                                    <span>Forsæt med Google</span>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="column small-12 large-4">
+                    <div class="help">
+                        <h3>Brug for hjælp?</h3>
+                        <p>
+                            Vi vil være mere end glade for at hjælpe dig med at udfylde denne formular. Kontakt os venligst på:
+                            <span class="phone">+45 21 74 67 66</span>
+                            <a href="mailto:support@luftr.dk" class="email">support@luftr.dk</a>
+                        </p>
+                    </div>
+                    <div class="login">
+                        <h3>Allerede medlem?</h3>
+                        <p>
+                            <a [routerLink]="['Login']">Log ind</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

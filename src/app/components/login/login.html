@@ -1,29 +1,60 @@
-<div id="login">
-    <a [href]="facebookLink" class="button facebook">
-        <span>Log ind med Facebook</span>
-    </a>
-    <a [href]="googleLink" class="button google">
-        <span>Log ind med Google</span>
-    </a>
-    <div class="separator">
-        <span>eller</span>
-    </div>
-    <form class="form-container" role="form" [ngFormModel]="loginForm" (submit)="login($event)" autocomplete="false">
-        <div class="form-group">
-            <input type="text" ngControl="email" class="form-control" id="email" placeholder="E-mail">
-        </div>
-        <div class="form-group">
-            <input type="password" ngControl="password" class="form-control" id="password" placeholder="Adgangskode">
-        </div>
-        <button type="submit" class="button action" [ngClass]="{'disabled': !loginForm.valid}">Log ind</button>
-    </form>
-    <hr />
-    <div class="row collapse signup">
-        <div class="column small-6">
-            <span>Har du ikke en konto?</span>
-        </div>
-        <div class="column small-6" style="text-align: right;">
-            <a [routerLink]="['RegisterUser']">Tilmeld dig</a>
+<headline>Log ind</headline>
+<div class="row">
+    <div class="column small-12">
+        <div class="login-container">
+            <div class="row">
+                <div class="column small-12 large-8">
+                     <form class="form-container" role="form" [ngFormModel]="loginForm" (submit)="login($event)">
+                        <div class="group">
+                            <h3>Almindelig adgang</h3>
+                            <p>
+                                Har du oprettet en bruger med e-mail kan du bruge nedenstående til at logge ind.
+                            </p>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="text" ngControl="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Adgangskode</label>
+                                <input type="password" ngControl="password" class="form-control" id="password">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" [ngClass]="{'disabled': !loginForm.valid}">Log ind</button>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <h3>Social adgang</h3>
+                            <p>
+                                Vi kræver kun adgang til din e-mail information fra det sociale medie.
+                            </p>
+                            <div class="form-group">
+                                <a [href]="facebookLink" class="button facebook">
+                                    <span>Log ind med Facebook</span>
+                                </a>
+                            </div>
+                            <div class="form-group">
+                                <a [href]="googleLink" class="button google">
+                                    <span>Log ind med Google</span>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="column small-12 large-4">
+                    <div class="forgot">
+                        <h3>Glemt din adgangskode?</h3>
+                        <p>
+                            Har du glemt din adgangskode, så kan du klikke <a href="/">her</a> for at nustille din adgang.
+                        </p>
+                    </div>
+                    <div class="register">
+                        <h3>Har du ikke en konto?</h3>
+                        <p>
+                            <a [routerLink]="['RegisterUser']">Tilmeld dig</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

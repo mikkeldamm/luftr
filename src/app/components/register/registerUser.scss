@@ -1,4 +1,20 @@
-#register {
+$column-gutter: 2rem;
+
+.register-container {
+    
+    background-color: #fff;
+    padding: 3em;
+    border-radius: 2px;
+    
+    .column {
+        padding-left: $column-gutter;
+        padding-right: $column-gutter;
+    }
+
+    .row {
+        margin-left: -$column-gutter;
+        margin-right: -$column-gutter;
+    }
     
     .button {
         
@@ -43,98 +59,126 @@
             color: #fff;
             font-weight: bold;
         }
-        
-        &+ .button {
-            
-            margin-top: 8px;
-            margin-left: 0;
-        }
     }
     
-    .separator {
+    h3 {
+        margin: 0;
+    }
+    
+    .group {
         
-        background: none;
+        margin-top: 4.5em;
         position: relative;
-        text-align: center;
-        margin-bottom: 0.2em;
         
-        &:before {
+        &:first-child {
             
-            content: "";
+            margin-top: 0;
+        }
+        
+        &:last-child {
+            
+            &:after {
+                
+                display: none;
+            }
+        }
+        
+        &:after {
+            
+            content: ". . .";
             position: absolute;
+            bottom: -2.2em;
             left: 0;
             right: 0;
-            border-top: 1px solid #dce0e0;
-            top: 1px;
-            bottom: 0;
-            margin: auto;
-            height: 1px;
-            z-index: -1;
+            width: 100%;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #A4CCD6;
         }
-        
-        span {
+
+        h3 {
             
-            background-color: #fff;
-            display: inline-block;
-            padding: 8px;
-            font-size: 14px;
-        }
-    }
-    
-    hr {
+            color: #4C4F50;
+        }        
         
-        margin-top: 15px;
-        margin-bottom: 15px;
-        border: 0;
-        border-top: 1px solid #dce0e0;
-    }
-    
-    .form-container {
+        p {
+            
+            color: #868686;
+            margin-bottom: 2em;
+            margin-top: 0.5em;
+        }
         
         .form-group {
             
-            margin-bottom: 0.5em;
-            
-            input {
+            margin-bottom: 0.8em;
+    
+            &:last-child {
                 
+                margin-bottom: 0;
+            }
+        
+            label {
                 display: block;
-                border: 1px solid #c4c4c4;
-                border-radius: 2px;
-                background-color: #fff;
-                color: #565a5c;
-                padding: 10px 35px 10px 10px;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 0.75em;
+                margin-bottom: 0.5em;
+            }
+            
+            input, textarea, select {
+                
+                border: 1px solid #D2D2D2;
+                background-color: #FDFDFD;
                 width: 100%;
-                height: 64px;
-                font-size: 16px;
+                border-radius: 3px;
+                padding: 0.5em 0.7em;
+                //box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.03);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                
+                &[disabled] {
+                    background-color: #ECECEC;
+                }
+                
+                &::-webkit-input-placeholder,
+                &::-moz-placeholder,
+                &:-ms-input-placeholder {
+                    
+                    color: #D2D2D2;
+                    font-size: 0.8em;
+                }
             }
         }
     }
     
-    .signup {
+    button {
         
-        span {
-            
-            padding-top: 0.5em;
-            display: block;
-        }
-        
-        a {
-        
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 2px;
-            font-size: 0.95em;
-            padding: 0.5em 1em;
-            color: #AD7705;
-            border: 1px solid #D89B1B;
-            box-shadow: 1px 2px 0px 1px rgba(0,0,0,0.03);
-            position: relative;
-            
-            &:hover {
-                
-                background-color: #F3B025;
-                color: #FFF;
-            }
-        }
+        margin-top: 1em;
+        border: 1px solid #D89B1B;
+        background-color: #E4AB32;
+        width: 100%;
+        border-radius: 3px;
+        padding: 0.9em 0.7em;
+        color: #FFF;
+        text-transform: uppercase;
+        font-weight: bold;
+        box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.help {
+    p {
+        font-size: 0.9em;
+    }
+}
+
+.login {
+    
+    margin-top: 3em;
+    
+    p {
+        font-size: 0.9em;
     }
 }

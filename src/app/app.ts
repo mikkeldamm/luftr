@@ -92,13 +92,6 @@ export class App implements OnInit {
             
             console.log(value);
             
-            
-        this._af.object('/users/123').update({
-            userid: "auth0:56df533d43edb5f95c1cd868",
-            firstName: "mikkel",
-            lastName: "damm"
-        });
-            
         }).catch((err) => {
             
             console.log(err);
