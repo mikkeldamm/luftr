@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormBuilder, Validators, Control, ControlGroup, FORM_DIRECTIVES} from '@angular/common';
 
 import {AngularFire} from 'angularfire2';
-import {UserState} from '../../../state/userState';
 
 @Component({
     selector: 'profileInfo',
@@ -17,8 +16,6 @@ export class ProfileInfo {
     profilePicture: Control;
 
     constructor(
-        /*private _af: AngularFire,
-        private _userState: UserState,*/
         private _formBuilder: FormBuilder
     ) {
         

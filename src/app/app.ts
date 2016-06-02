@@ -1,15 +1,5 @@
-import {
-        Injector, 
-        Component, 
-        OnInit,
-        ElementRef, 
-        Renderer, 
-        ViewEncapsulation, 
-        HostListener, 
-        DynamicComponentLoader,
-        ComponentRef
-} from '@angular/core';
-import {RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import { Component, OnInit, ViewEncapsulation, ComponentRef } from '@angular/core';
+import { RouteConfig, Router, RouteData, AuxRoute, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { AngularFire, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -23,7 +13,7 @@ import {Home} from './components/home/home';
 import {Login} from './components/login/login';
 import {LoginSocial} from './components/login/loginSocial';
 import {RegisterUser} from './components/register/registerUser';
-import {Profile} from './components/profile/profile';
+import {Profile} from './components/profile/profile.component';
 
 @Component({
     selector: 'app',
@@ -52,31 +42,12 @@ export class App implements OnInit {
     
     constructor(
         private _router: Router,
-        private _dynamicComponentLoader: DynamicComponentLoader,
-        private _elementRef: ElementRef,
-        private _injector: Injector,
         private _af: AngularFire
         ) {
             
     }
     
     ngOnInit() {
-        
-        /*
-        this._router.subscribe((url) => {
-            
-            if (url === "login") {
-                
-                this.closeModal();
-                this.loadLoginComponent();
-                
-            } else if (url === "register") {
-                
-                this.closeModal();
-                this.loadRegisterComponent();
-            }
-        });
-        */
         
         this._af.list('/users').subscribe((res) => {
            console.log(res); 
@@ -118,37 +89,4 @@ export class App implements OnInit {
         });
         */
     }
-    
-    /*
-    closeModal() {
-        
-        if (this.componentReference) {
-            this.componentReference.destroy();
-            this.isModalActive = false;
-        }
-    }
-    
-    // TODO: Find better way to handle load of component into modal
-    private loadLoginComponent() {
-        
-        var componentPromise = this._dynamicComponentLoader.loadNextToLocation(Login, '#modal-content', this._injector);
-        
-        componentPromise.then((comRef) => {
-            
-            this.isModalActive = true;
-            this.componentReference = comRef;
-        });
-    }
-    
-    private loadRegisterComponent() {
-        
-        var componentPromise = this._dynamicComponentLoader.loadAsRoot(RegisterUser, '#modal-content', this._injector);
-        
-        componentPromise.then((comRef) => {
-            
-            this.isModalActive = true;
-            this.componentReference = comRef;
-        });
-    }
-    */
 }
