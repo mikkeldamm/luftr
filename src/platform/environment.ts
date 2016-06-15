@@ -2,7 +2,7 @@ import { enableProdMode } from '@angular/core';
 
 let PROVIDERS = [];
 
-if (ENV === 'production') {
+//if (ENV === 'production') {
   
     enableProdMode();
 
@@ -10,12 +10,12 @@ if (ENV === 'production') {
         ...PROVIDERS
     ];
   
-} else {
+//} else {
   
-    PROVIDERS = [
-        ...PROVIDERS
-    ];
-}
+//    PROVIDERS = [
+//        ...PROVIDERS
+//    ];
+//}
 
 export const ENV_PROVIDERS = [
     ...PROVIDERS

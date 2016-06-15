@@ -36,14 +36,7 @@ import {Profile} from './components/profile/profile.component';
 ])
 export class App implements OnInit {
     
-    isModalActive: boolean = false;
-    
-    componentReference: ComponentRef<App>;
-    
-    constructor(
-        private _router: Router,
-        private _af: AngularFire
-        ) {
+    constructor(private _af: AngularFire) {
             
     }
     
