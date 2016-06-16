@@ -35,11 +35,63 @@ module.exports = [
         },
         debug: false,
         devtool: 'source-map',
+        resolve: {
+            extensions: ['', '.ts', '.js'],
+            root: helpers.root('src'),
+            modulesDirectories: ['node_modules'],
+            alias: {
+                'angular2/core': helpers.root('node_modules/@angular/core/index.js'),
+                'angular2/testing': helpers.root('node_modules/@angular/core/testing.js'),
+                '@angular/testing': helpers.root('node_modules/@angular/core/testing.js'),
+                'angular2/platform/browser': helpers.root('node_modules/@angular/platform-browser/index.js'),
+                'angular2/router': helpers.root('node_modules/@angular/router-deprecated/index.js'),
+                'angular2/http': helpers.root('node_modules/@angular/http/index.js'),
+                'angular2/http/testing': helpers.root('node_modules/@angular/http/testing.js')
+            }
+        },
         output: {
             path: helpers.root('dist'),
             filename: '[name].[chunkhash].bundle.js',
             sourceMapFilename: '[name].[chunkhash].bundle.map',
             chunkFilename: '[id].[chunkhash].chunk.js'
+        },
+        module: {
+            preLoaders: [
+                {
+                    test: /\.js$/,
+                    loader: 'source-map-loader',
+                    exclude: [
+                        helpers.root('node_modules/rxjs'),
+                        helpers.root('node_modules/@angular'),
+                        helpers.root('node_modules/angularfire2'),
+                    ]
+                }
+            ],
+            loaders: [
+                {
+                    test: /\.ts$/,
+                    loader: 'awesome-typescript-loader',
+                    exclude: [/\.(spec|e2e)\.ts$/]
+                },
+                {
+                    test: /\.json$/,
+                    loader: 'json-loader'
+                },
+                {
+                    test: /\.css$/,
+                    loader: 'raw-loader'
+                },
+                {
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
+                    loaders: ["raw-loader", "sass-loader"] // sass-loader not scss-loader
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'raw-loader',
+                    exclude: [helpers.root('src/index.html')]
+                }
+            ]
         },
         plugins: [
             new ForkCheckerPlugin(),
@@ -108,18 +160,44 @@ module.exports = [
         }
     }),
     webpackMerge(commonConfig, {
-        context: __dirname,
+        context: path.resolve(__dirname, '..'),
         target: 'node',
         entry: {
-            'main': '../src/server.ts'
+            'main': './src/server'
+        },
+        resolve: {
+            extensions: ['', '.ts', '.js'],
+            root: helpers.root('src')
         },
         externals: checkNodeImport,
-        debug: false,
         output: {
             path: helpers.root('dist'),
             publicPath: path.resolve(__dirname),
             filename: 'index.js',
             libraryTarget: 'commonjs2'
+        },
+        module: {
+            loaders: [
+                { test: /\.ts$/, loader: 'ts-loader', exclude: [/\.(spec|e2e)\.ts$/] },
+                {
+                    test: /\.json$/,
+                    loader: 'json-loader'
+                },
+                {
+                    test: /\.css$/,
+                    loader: 'raw-loader'
+                },
+                {
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
+                    loaders: ["raw-loader", "sass-loader"] // sass-loader not scss-loader
+                },
+                {
+                    test: /\.html$/,
+                    loader: 'raw-loader',
+                    exclude: [helpers.root('src/index.html')]
+                }
+            ]
         },
         plugins: [
             new webpack.optimize.OccurenceOrderPlugin(true)
