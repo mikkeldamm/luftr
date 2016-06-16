@@ -36,6 +36,8 @@ import {Profile} from './components/profile/profile.component';
 ])
 export class App implements OnInit {
     
+    data: any;
+
     constructor(private _af: AngularFire) {
             
     }
@@ -43,6 +45,8 @@ export class App implements OnInit {
     ngOnInit() {
         
         this._af.list('/users').subscribe((res) => {
+
+            this.data = JSON.stringify(res);
            console.log(res); 
         });
         
