@@ -10,7 +10,7 @@ import { expressEngine } from 'angular2-universal';
 enableProdMode();
 
 const app = express();
-const ROOT = path.join(path.resolve(__dirname, '../luftr/dist'));
+const ROOT = path.join(path.resolve(__dirname, '../dist'));
 
 app.engine('.html', expressEngine);
 app.set('views', ROOT);
